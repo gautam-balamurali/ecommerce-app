@@ -49,3 +49,12 @@
   font-size: 1.2rem;
   margin: 1rem;
 }
+
+.title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
