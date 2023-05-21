@@ -9,6 +9,14 @@ export const productsReducer = (state, action) => {
       return { ...state, errorDetails: payload };
     case "FETCH_PRODUCTS_DATA":
       return { ...state, products: [...payload] };
+    case "UPDATE_CART_AND_WISHLIST":
+      return {
+        ...state,
+        cart: [...payload.cart],
+        wishlist: [...payload.wishlist],
+      };
+    case "LOG_OUT":
+      return { ...state, cart: [], wishlist: [] };
     default:
       return state;
   }
