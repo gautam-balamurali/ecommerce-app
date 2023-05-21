@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav>
       <NavLink to={"/cart"}> Cart </NavLink> ||
       <NavLink to={"/wishlist"}> Wishlist </NavLink> ||
-      <NavLink to={"/login"}> Login </NavLink>
+      <NavLink to={"/user-profile"}> User </NavLink>
     </nav>
   );
 };
