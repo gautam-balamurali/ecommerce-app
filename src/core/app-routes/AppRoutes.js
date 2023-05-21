@@ -8,6 +8,9 @@ import WishlistPage from "../../components/pages/wishlist-page/WishlistPage";
 import IndividualProductPage from "../../components/pages/individual-product-page/IndividualProductPage";
 import PageNotFound from "../../components/pages/page-not-found-page/PageNotFound";
 import ProductsListingPage from "../../components/pages/products-listing-page/ProductsListingPage";
+import LoginPage from "../../components/pages/login-page/LoginPage";
+import { AuthGuard } from "../auth-guard/AuthGuard";
+import UserProfilePage from "../../components/pages/user-profile-page/UserProfilePage";
 
 const AppRoutes = () => {
   return (
@@ -18,11 +21,34 @@ const AppRoutes = () => {
         element={<MockbeeDocumentationPage />}
       />
       <Route path="/mockman" element={<Mockman />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/wishlist" element={<WishlistPage />} />
       <Route path="/products" element={<ProductsListingPage />} />
       <Route path="/product/:productId" element={<IndividualProductPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<PageNotFound />} />
+      <Route
+        path="/cart"
+        element={
+          <AuthGuard>
+            <CartPage />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path="/wishlist"
+        element={
+          <AuthGuard>
+            <WishlistPage />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path="/user-profile"
+        element={
+          <AuthGuard>
+            <UserProfilePage />
+          </AuthGuard>
+        }
+      />
     </Routes>
   );
 };
