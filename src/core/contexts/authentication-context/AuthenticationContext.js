@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
-import { useProducts } from "../products-context/ProductsContext";
 
 export const AuthenticationContext = createContext();
 
@@ -9,7 +8,6 @@ export const AuthenticationProvider = ({ children }) => {
     token: JSON.parse(localStorage.getItem("token")),
     user: JSON.parse(localStorage.getItem("user")),
   });
-  const { dispatch } = useProducts();
 
   const syncUserDetailsWithCartAndWishlist = (token, user) => {
     setLoggedInUserDetails((prev) => ({
@@ -17,14 +15,12 @@ export const AuthenticationProvider = ({ children }) => {
       token,
       user,
     }));
-    dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: user });
   };
 
   const logOutUser = () => {
     setLoggedInUserDetails((prev) => ({ ...prev, token: "", user: null }));
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    dispatch({ type: "LOG_OUT" });
   };
 
   const logInUser = async (body) => {
@@ -38,6 +34,7 @@ export const AuthenticationProvider = ({ children }) => {
         localStorage.setItem("token", JSON.stringify(encodedToken));
         localStorage.setItem("user", JSON.stringify(foundUser));
         syncUserDetailsWithCartAndWishlist(encodedToken, foundUser);
+        return foundUser;
       }
     } catch (error) {
       console.error(error);
@@ -55,6 +52,7 @@ export const AuthenticationProvider = ({ children }) => {
         localStorage.setItem("token", JSON.stringify(encodedToken));
         localStorage.setItem("user", JSON.stringify(createdUser));
         syncUserDetailsWithCartAndWishlist(encodedToken, createdUser);
+        return createdUser;
       }
     } catch (error) {
       console.error(error);

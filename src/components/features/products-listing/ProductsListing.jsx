@@ -4,7 +4,9 @@ const ProductsListing = () => {
   const { products } = useProducts();
 
   return (
-    <div style={{ display: "flex", margin: "1rem auto", justifyContent:'center' }}>
+    <div
+      style={{ display: "flex", margin: "1rem auto", justifyContent: "center" }}
+    >
       {products.length > 0 &&
         products.map(({ id, title, author, price, categoryName }) => (
           <div
@@ -20,6 +22,8 @@ const ProductsListing = () => {
             <p>{author}</p>
             <p>{price}</p>
             <p>{categoryName}</p>
+            <button>Add to cart</button>
+            <button>Add to wishlist</button>
           </div>
         ))}
     </div>
