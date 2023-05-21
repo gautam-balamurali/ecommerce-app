@@ -28,6 +28,7 @@ export const ProductsProvider = ({ children }) => {
       }
     })();
   }, []);
+
   return (
     <ProductsContext.Provider value={{ ...state, dispatch }}>
       {children}

@@ -11,6 +11,7 @@ import ProductsListingPage from "../../components/pages/products-listing-page/Pr
 import LoginPage from "../../components/pages/login-page/LoginPage";
 import { AuthGuard } from "../auth-guard/AuthGuard";
 import UserProfilePage from "../../components/pages/user-profile-page/UserProfilePage";
+import SignUpPage from "../../components/pages/sign-up-page/SignUpPage";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
       <Route path="/products" element={<ProductsListingPage />} />
       <Route path="/product/:productId" element={<IndividualProductPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="*" element={<PageNotFound />} />
       <Route
         path="/cart"
