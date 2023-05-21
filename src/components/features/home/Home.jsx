@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CategoriesListing from "./categories-listing/CategoriesListing";
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       <Link to={"/products"}>
         <button>Go to store</button>
       </Link>
+      <CategoriesListing />
     </>
   );
 };
