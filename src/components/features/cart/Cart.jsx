@@ -1,7 +1,7 @@
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 
 const Cart = () => {
-  const { cart } = useProducts();
+  const { cart, updateCartProduct, removeProductFromCart } = useProducts();
   return (
     <>
       <h2>Cart Page</h2>
@@ -14,10 +14,10 @@ const Cart = () => {
       >
         {cart?.length > 0 &&
           cart.map((product) => {
-            const { id, title, author, price, categoryName } = product;
+            const { _id, title, author, price, categoryName, qty } = product;
             return (
               <div
-                key={id}
+                key={_id}
                 style={{
                   border: "1px solid",
                   height: "300px",
@@ -29,6 +29,24 @@ const Cart = () => {
                 <p>{author}</p>
                 <p>{price}</p>
                 <p>{categoryName}</p>
+                <p style={{ display: "inline-block" }}>Quantity: {qty}</p>
+                <div
+                  style={{ display: "inline-block", margin: "auto 1rem" }}
+                  className="inc-dec-btns"
+                >
+                  <button
+                    disabled={qty < 2}
+                    onClick={() => updateCartProduct(_id, "decrement")}
+                  >
+                    -
+                  </button>
+                  <button onClick={() => updateCartProduct(_id, "increment")}>
+                    +
+                  </button>
+                </div>
+                <button onClick={() => removeProductFromCart(_id)}>
+                  Remove from Cart
+                </button>
               </div>
             );
           })}
