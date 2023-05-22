@@ -1,0 +1,14 @@
+.checkbox-filter-style {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: auto 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.checkbox-filter-style label {
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
