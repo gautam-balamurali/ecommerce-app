@@ -21,8 +21,16 @@ const SignUp = () => {
   };
 
   const signUpClickHandler = async () => {
-    const userDetails = await signUpUser(testSignUpCredentials);
-    dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+    dispatch({ type: "LOADER_INITIATED" });
+    try {
+      const userDetails = await signUpUser(testSignUpCredentials);
+      dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+    } catch (error) {
+      console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
+    }
   };
 
   useEffect(() => {

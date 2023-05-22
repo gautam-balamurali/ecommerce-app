@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
+import { useAuth } from "../../../core/contexts/authentication-context/AuthenticationContext";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   const {
     cart,
@@ -10,6 +12,8 @@ const ProductCard = ({ product }) => {
     addProductToCart,
     addProductToWishlist,
     removeProductFromWishlist,
+    isLoading,
+    errorDetails,
   } = useProducts();
 
   const isCartContainsProduct = (productId) =>
@@ -44,28 +48,35 @@ const ProductCard = ({ product }) => {
             <p>{categoryName}</p>
             <button
               onClick={() =>
-                isCartContainsProduct(_id)
-                  ? navigate("/cart")
-                  : addProductToCart(product)
+                token
+                  ? isCartContainsProduct(_id)
+                    ? navigate("/cart")
+                    : addProductToCart(product)
+                  : navigate("/login")
               }
             >
               {isCartContainsProduct(_id) ? "Go to Cart" : "Add to Cart"}
             </button>
             <button
               onClick={() =>
-                isWishlistContainsProduct(_id)
-                  ? removeProductFromWishlist(_id)
-                  : addProductToWishlist(product)
+                token
+                  ? isWishlistContainsProduct(_id)
+                    ? removeProductFromWishlist(_id)
+                    : addProductToWishlist(product)
+                  : navigate("/login")
               }
             >
               {isWishlistContainsProduct(_id)
                 ? "Remove from Wishlist"
                 : "Add to wishlist"}
             </button>
+            <button onClick={() => navigate("/products")}>Go Back</button>
           </div>
         </div>
       )}
-      {!product && <h3>Product details not found.</h3>}
+      {!isLoading && !errorDetails && !product && (
+        <h3>Product details not found.</h3>
+      )}
     </>
   );
 };

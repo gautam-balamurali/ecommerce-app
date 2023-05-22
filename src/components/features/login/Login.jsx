@@ -17,9 +17,16 @@ const Login = () => {
   };
 
   const loginClickHandler = async () => {
-    const userDetails = await logInUser(testLoginCredentials);
-    console.log({ userDetails });
-    dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+    dispatch({ type: "LOADER_INITIATED" });
+    try {
+      const userDetails = await logInUser(testLoginCredentials);
+      dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+    } catch (error) {
+      console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
+    }
   };
 
   useEffect(() => {
