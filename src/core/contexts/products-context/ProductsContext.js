@@ -128,6 +128,21 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const removeProductFromWishlist = async (productId) => {
+    try {
+      const response = await axios.delete(`/api/user/wishlist/${productId}`, {
+        headers: { authorization: token },
+      });
+      if (response.status === 200 || response.status === 201)
+        dispatch({
+          type: "FETCH_WISHLIST_DATA",
+          payload: response?.data?.wishlist,
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <ProductsContext.Provider
       value={{
@@ -137,6 +152,7 @@ export const ProductsProvider = ({ children }) => {
         addProductToWishlist,
         updateCartProduct,
         removeProductFromCart,
+        removeProductFromWishlist,
       }}
     >
       {children}
