@@ -54,7 +54,7 @@ export const ProductsProvider = ({ children }) => {
         }
       } catch (error) {
         console.error(error);
-        dispatch({ type: "FETCH_ERROR_DETAILS", payload: error });
+        dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
       } finally {
         dispatch({ type: "LOADER_STOPPED" });
       }
@@ -63,6 +63,7 @@ export const ProductsProvider = ({ children }) => {
   }, [token]);
 
   const addProductToCart = async (product) => {
+    dispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         "/api/user/cart",
@@ -76,10 +77,14 @@ export const ProductsProvider = ({ children }) => {
         });
     } catch (error) {
       console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const updateCartProduct = async (productId, type) => {
+    dispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         `/api/user/cart/${productId}`,
@@ -93,10 +98,14 @@ export const ProductsProvider = ({ children }) => {
         });
     } catch (error) {
       console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const removeProductFromCart = async (productId) => {
+    dispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.delete(`/api/user/cart/${productId}`, {
         headers: { authorization: token },
@@ -108,10 +117,14 @@ export const ProductsProvider = ({ children }) => {
         });
     } catch (error) {
       console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const addProductToWishlist = async (product) => {
+    dispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         "/api/user/wishlist",
@@ -125,10 +138,14 @@ export const ProductsProvider = ({ children }) => {
         });
     } catch (error) {
       console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const removeProductFromWishlist = async (productId) => {
+    dispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.delete(`/api/user/wishlist/${productId}`, {
         headers: { authorization: token },
@@ -140,6 +157,9 @@ export const ProductsProvider = ({ children }) => {
         });
     } catch (error) {
       console.error(error);
+      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+    } finally {
+      dispatch({ type: "LOADER_STOPPED" });
     }
   };
 
