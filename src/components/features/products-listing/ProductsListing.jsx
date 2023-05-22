@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 
@@ -46,6 +46,7 @@ const ProductsListing = () => {
                 <p>{author}</p>
                 <p>{price}</p>
                 <p>{categoryName}</p>
+                <Link to={`/product/${_id}`}>View details</Link>
                 <button
                   onClick={() =>
                     isCartContainsProduct(_id)
