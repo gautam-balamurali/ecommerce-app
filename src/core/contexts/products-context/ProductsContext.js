@@ -62,8 +62,39 @@ export const ProductsProvider = ({ children }) => {
     // eslint-disable-next-line
   }, [token]);
 
-  const addProductToCart = () => {};
-  const addProductToWishlist = () => {};
+  const addProductToCart = async (product) => {
+    try {
+      const response = await axios.post(
+        "/api/user/cart",
+        { product },
+        { headers: { authorization: token } }
+      );
+      if (response.status === 200 || response.status === 201)
+        dispatch({
+          type: "FETCH_CART_DATA",
+          payload: response?.data?.cart,
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addProductToWishlist = async (product) => {
+    try {
+      const response = await axios.post(
+        "/api/user/wishlist",
+        { product },
+        { headers: { authorization: token } }
+      );
+      if (response.status === 200 || response.status === 201)
+        dispatch({
+          type: "FETCH_WISHLIST_DATA",
+          payload: response?.data?.wishlist,
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <ProductsContext.Provider
