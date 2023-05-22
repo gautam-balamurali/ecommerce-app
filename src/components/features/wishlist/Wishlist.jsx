@@ -14,10 +14,10 @@ const Wishlist = () => {
       >
         {wishlist?.length > 0 &&
           wishlist.map((product) => {
-            const { id, title, author, price, categoryName } = product;
+            const { _id, title, author, price, categoryName } = product;
             return (
               <div
-                key={id}
+                key={_id}
                 style={{
                   border: "1px solid",
                   height: "300px",

@@ -9,9 +9,9 @@ const ProductsListing = () => {
     useProducts();
 
   const isCartContainsProduct = (productId) =>
-    cart.find((product) => product.id === productId);
+    cart.find((product) => product._id === productId);
   const isWishlistContainsProduct = (productId) =>
-    wishlist.find((product) => product.id === productId);
+    wishlist.find((product) => product._id === productId);
 
   return (
     <>
@@ -25,10 +25,10 @@ const ProductsListing = () => {
       >
         {products.length > 0 &&
           products.map((product) => {
-            const { id, title, author, price, categoryName } = product;
+            const { _id, title, author, price, categoryName } = product;
             return (
               <div
-                key={id}
+                key={_id}
                 style={{
                   border: "1px solid",
                   height: "300px",
@@ -42,21 +42,21 @@ const ProductsListing = () => {
                 <p>{categoryName}</p>
                 <button
                   onClick={() =>
-                    isCartContainsProduct(id)
+                    isCartContainsProduct(_id)
                       ? navigate("/cart")
                       : addProductToCart(product)
                   }
                 >
-                  {isCartContainsProduct(id) ? "Go to Cart" : "Add to Cart"}
+                  {isCartContainsProduct(_id) ? "Go to Cart" : "Add to Cart"}
                 </button>
                 <button
                   onClick={() =>
-                    isWishlistContainsProduct(id)
+                    isWishlistContainsProduct(_id)
                       ? navigate("/wishlist")
                       : addProductToWishlist(product)
                   }
                 >
-                  {isWishlistContainsProduct(id)
+                  {isWishlistContainsProduct(_id)
                     ? "Go to Wishlist"
                     : "Add to wishlist"}
                 </button>

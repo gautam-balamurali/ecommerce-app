@@ -79,6 +79,38 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const updateCartProduct = async (productId, type) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${productId}`,
+        { action: { type } },
+        { headers: { authorization: token } }
+      );
+      if (response.status === 200 || response.status === 201)
+        dispatch({
+          type: "FETCH_CART_DATA",
+          payload: response?.data?.cart,
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeProductFromCart = async (productId) => {
+    try {
+      const response = await axios.delete(`/api/user/cart/${productId}`, {
+        headers: { authorization: token },
+      });
+      if (response.status === 200 || response.status === 201)
+        dispatch({
+          type: "FETCH_CART_DATA",
+          payload: response?.data?.cart,
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const addProductToWishlist = async (product) => {
     try {
       const response = await axios.post(
@@ -98,7 +130,14 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ ...state, dispatch, addProductToCart, addProductToWishlist }}
+      value={{
+        ...state,
+        dispatch,
+        addProductToCart,
+        addProductToWishlist,
+        updateCartProduct,
+        removeProductFromCart,
+      }}
     >
       {children}
     </ProductsContext.Provider>
