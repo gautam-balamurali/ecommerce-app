@@ -55,7 +55,8 @@
   color: inherit;
 }
 
-button {
+button,
+input[type="checkbox"] {
   cursor: pointer;
 }
 
