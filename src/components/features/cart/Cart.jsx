@@ -1,7 +1,18 @@
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 
 const Cart = () => {
-  const { cart, updateCartProduct, removeProductFromCart } = useProducts();
+  const {
+    cart,
+    wishlist,
+    updateCartProduct,
+    removeProductFromCart,
+    removeProductFromWishlist,
+    addProductToWishlist,
+  } = useProducts();
+
+  const isWishlistContainsProduct = (productId) =>
+    wishlist.find((product) => product._id === productId);
+
   return (
     <>
       <h2>Cart Page</h2>
@@ -46,6 +57,17 @@ const Cart = () => {
                 </div>
                 <button onClick={() => removeProductFromCart(_id)}>
                   Remove from Cart
+                </button>
+                <button
+                  onClick={() =>
+                    isWishlistContainsProduct(_id)
+                      ? removeProductFromWishlist(_id)
+                      : addProductToWishlist(product)
+                  }
+                >
+                  {isWishlistContainsProduct(_id)
+                    ? "Remove from Wishlist"
+                    : "Add to wishlist"}
                 </button>
               </div>
             );

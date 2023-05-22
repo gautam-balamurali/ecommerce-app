@@ -1,7 +1,16 @@
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 
 const Wishlist = () => {
-  const { wishlist } = useProducts();
+  const {
+    cart,
+    wishlist,
+    removeProductFromWishlist,
+    addProductToCart,
+    updateCartProduct,
+  } = useProducts();
+
+  const isCartContainsProduct = (productId) =>
+    cart.find((product) => product._id === productId);
   return (
     <>
       <h2>Wishlist Page</h2>
@@ -29,6 +38,18 @@ const Wishlist = () => {
                 <p>{author}</p>
                 <p>{price}</p>
                 <p>{categoryName}</p>
+                <button onClick={() => removeProductFromWishlist(_id)}>
+                  Remove from Wishlist
+                </button>
+                <button
+                  onClick={() =>
+                    isCartContainsProduct(_id)
+                      ? updateCartProduct(_id, "increment")
+                      : addProductToCart(product)
+                  }
+                >
+                  Add to Cart
+                </button>
               </div>
             );
           })}

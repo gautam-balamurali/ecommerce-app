@@ -5,8 +5,14 @@ import { useProducts } from "../../../core/contexts/products-context/ProductsCon
 const ProductsListing = () => {
   const navigate = useNavigate();
 
-  const { products, cart, wishlist, addProductToCart, addProductToWishlist } =
-    useProducts();
+  const {
+    products,
+    cart,
+    wishlist,
+    addProductToCart,
+    addProductToWishlist,
+    removeProductFromWishlist,
+  } = useProducts();
 
   const isCartContainsProduct = (productId) =>
     cart.find((product) => product._id === productId);
@@ -52,12 +58,12 @@ const ProductsListing = () => {
                 <button
                   onClick={() =>
                     isWishlistContainsProduct(_id)
-                      ? navigate("/wishlist")
+                      ? removeProductFromWishlist(_id)
                       : addProductToWishlist(product)
                   }
                 >
                   {isWishlistContainsProduct(_id)
-                    ? "Go to Wishlist"
+                    ? "Remove from Wishlist"
                     : "Add to wishlist"}
                 </button>
               </div>
