@@ -1,8 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import "./Login.css";
 import { useAuth } from "../../../core/contexts/authentication-context/AuthenticationContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
+import InputField from "../../shared/input-field-component/InputField";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,10 +18,25 @@ const Login = () => {
     password: "adarshbalika",
   };
 
-  const loginClickHandler = async () => {
+  const [loginCredentials, setLoginCredentials] = useState({
+    email: "",
+    password: "",
+  });
+
+  const loginCredentialsChangeHandler = (event) => {
+    const { name, value } = event.target;
+    setLoginCredentials((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const loginAsAGuestClickHandler = () => {
+    setLoginCredentials((prev) => ({ ...prev, ...testLoginCredentials }));
+    //loginHandler(loginCredentials);
+  };
+
+  const loginHandler = async (loginCredentials) => {
     dispatch({ type: "LOADER_INITIATED" });
     try {
-      const userDetails = await logInUser(testLoginCredentials);
+      const userDetails = await logInUser(loginCredentials);
       dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
     } catch (error) {
       console.error(error);
@@ -29,6 +46,11 @@ const Login = () => {
     }
   };
 
+  const submitClickHandler = (event) => {
+    event.preventDefault();
+    loginHandler(loginCredentials);
+  };
+
   useEffect(() => {
     if (token)
       navigate(location?.state?.from.pathname || "/", { replace: true });
@@ -36,13 +58,54 @@ const Login = () => {
   }, [token]);
 
   return (
-    <div className="login">
-      <h2>Login Page</h2>
-      <button onClick={loginClickHandler}>Login with test credentials</button>
-      <p>New user?</p>
-      <Link to={"/sign-up"}>
-        <button>Create A New Account</button>
-      </Link>
+    <div className="login-page">
+      <div className="login-card">
+        <form
+          className="login-content"
+          onSubmit={submitClickHandler}
+          autoComplete="off"
+        >
+          <h2>Login</h2>
+          <div className="email-section">
+            <InputField
+              className={"email-txt-inpt"}
+              label={"Email"}
+              label_class={"email"}
+              type={"email"}
+              name={"email"}
+              value={loginCredentials.email}
+              placeholder={"johndoe@gmail.com"}
+              onChangeFunction={loginCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <div className="pswd-section">
+            <InputField
+              className={"pswd-txt-inpt"}
+              label={"Password"}
+              label_class={"pswd"}
+              type={"password"}
+              name={"password"}
+              value={loginCredentials.password}
+              placeholder={"*******"}
+              onChangeFunction={loginCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <button type="submit" className="login-btn">
+            Login
+          </button>
+        </form>
+        <button onClick={loginAsAGuestClickHandler} className="login-btn">
+          Generate Guest Credentials
+        </button>
+        <p>
+          Don't have an account?
+          <Link to={"/sign-up"} style={{ textDecoration: "none" }}>
+            <span className="sign-up"> Sign Up </span>
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
