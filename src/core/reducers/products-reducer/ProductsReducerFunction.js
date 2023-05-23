@@ -18,8 +18,8 @@ export const productsReducer = (state, action) => {
     case "UPDATE_CART_AND_WISHLIST":
       return {
         ...state,
-        cart: [...payload.cart],
-        wishlist: [...payload.wishlist],
+        cart: [...payload?.cart],
+        wishlist: [...payload?.wishlist],
       };
     case "LOG_OUT":
       return { ...state, cart: [], wishlist: [] };

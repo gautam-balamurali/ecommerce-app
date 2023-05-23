@@ -1,8 +1,10 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import "./SignUp.css";
 import { useAuth } from "../../../core/contexts/authentication-context/AuthenticationContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
+import InputField from "../../shared/input-field-component/InputField";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -20,10 +22,26 @@ const SignUp = () => {
     password: "johnDoe",
   };
 
-  const signUpClickHandler = async () => {
+  const [signUpCredentials, setSignUpCredentials] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const signUpCredentialsChangeHandler = (event) => {
+    const { name, value } = event.target;
+    setSignUpCredentials((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const randomCredentialsClickHandler = () => {
+    setSignUpCredentials((prev) => ({ ...prev, ...testSignUpCredentials }));
+  };
+
+  const signUpHandler = async (signUpCredentials) => {
     dispatch({ type: "LOADER_INITIATED" });
     try {
-      const userDetails = await signUpUser(testSignUpCredentials);
+      const userDetails = await signUpUser(signUpCredentials);
       dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
     } catch (error) {
       console.error(error);
@@ -31,6 +49,11 @@ const SignUp = () => {
     } finally {
       dispatch({ type: "LOADER_STOPPED" });
     }
+  };
+
+  const submitClickHandler = (event) => {
+    event.preventDefault();
+    signUpHandler(signUpCredentials);
   };
 
   useEffect(() => {
@@ -42,11 +65,80 @@ const SignUp = () => {
   }, [token]);
 
   return (
-    <div>
-      <h2>Sign Up Page</h2>
-      <button onClick={signUpClickHandler}>
-        Sign Up with test credentials
-      </button>
+    <div className="signup-page">
+      <div className="signup-card">
+        <form
+          className="signup-content"
+          onSubmit={submitClickHandler}
+          autoComplete="off"
+        >
+          <h2>Sign Up</h2>
+          <div className="firstName-section">
+            <InputField
+              className={"firstName-txt-inpt"}
+              label={"First Name"}
+              label_class={"firstName"}
+              type={"text"}
+              name={"firstName"}
+              value={signUpCredentials.firstName}
+              placeholder={"John"}
+              onChangeFunction={signUpCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <div className="lastName-section">
+            <InputField
+              className={"lastName-txt-inpt"}
+              label={"Last Name"}
+              label_class={"lastName"}
+              type={"text"}
+              name={"lastName"}
+              value={signUpCredentials.lastName}
+              placeholder={"Doe"}
+              onChangeFunction={signUpCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <div className="email-section">
+            <InputField
+              className={"email-txt-inpt"}
+              label={"Email"}
+              label_class={"email"}
+              type={"email"}
+              name={"email"}
+              value={signUpCredentials.email}
+              placeholder={"johndoe@gmail.com"}
+              onChangeFunction={signUpCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <div className="pswd-section">
+            <InputField
+              className={"pswd-txt-inpt"}
+              label={"Password"}
+              label_class={"pswd"}
+              type={"password"}
+              name={"password"}
+              value={signUpCredentials.password}
+              placeholder={"*******"}
+              onChangeFunction={signUpCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <button type="submit" className="signup-btn">
+            Sign Up
+          </button>
+        </form>
+        <button onClick={randomCredentialsClickHandler} className="signup-btn">
+          Generate Random Credentials
+        </button>
+        <p>
+          Already have an account?
+          <Link to={"/login"} style={{ textDecoration: "none" }}>
+            <span className="login"> Log In </span>
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
