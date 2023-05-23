@@ -14,6 +14,7 @@ const InputField = ({
   span_class,
   min,
   max,
+  required,
 }) => {
   const handleChange = (event) => {
     if (typeof onChangeFunction === "function") {
@@ -40,6 +41,7 @@ const InputField = ({
         checked={checked}
         min={min}
         max={max}
+        required={required}
       />
     </>
   );
