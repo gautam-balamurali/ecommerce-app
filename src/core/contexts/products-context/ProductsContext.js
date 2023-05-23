@@ -189,6 +189,16 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
   };
 
+  const clearFilters = () => {
+    const newAppliedFilterValues = {
+      searchValue: "",
+      checkboxValues: [],
+      radioButtonValue: "",
+      rangeValue: 5,
+    };
+    dispatch({ type: "CLEAR_FILTERS", payload: { ...newAppliedFilterValues } });
+  };
+
   useEffect(() => {
     dispatch({ type: "LOADER_INITIATED" });
     (async () => {
@@ -228,6 +238,7 @@ export const ProductsProvider = ({ children }) => {
         removeProductFromWishlist,
         handleFilterChange,
         filterByCategory,
+        clearFilters,
       }}
     >
       {children}

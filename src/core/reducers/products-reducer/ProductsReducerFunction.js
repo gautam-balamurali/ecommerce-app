@@ -25,6 +25,8 @@ export const productsReducer = (state, action) => {
       return { ...state, cart: [], wishlist: [] };
     case "APPLY_FILTERS":
       return { ...state, appliedFilterValues: payload };
+    case "CLEAR_FILTERS":
+      return { ...state, appliedFilterValues: payload };
     default:
       return state;
   }

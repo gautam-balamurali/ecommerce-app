@@ -5,7 +5,8 @@ import InputField from "../../../shared/input-field-component/InputField";
 import { priceFieldFilters } from "../../../../config/AppConfig";
 
 const Filters = () => {
-  const { categories, handleFilterChange, appliedFilterValues } = useProducts();
+  const { categories, handleFilterChange, appliedFilterValues, clearFilters } =
+    useProducts();
 
   const categoriesFieldFilters = categories.reduce(
     (acc, { categoryName }) => [...acc, categoryName],
@@ -18,6 +19,7 @@ const Filters = () => {
           <span className="material-symbols-outlined">filter_alt</span>
           Filters
         </legend>
+        <button onClick={clearFilters}>Clear Filters</button>
         <h4>Price</h4>
         {priceFieldFilters.map(({ label, value, type, name }) => (
           <div key={value} className={"selectable-input-filter"}>
