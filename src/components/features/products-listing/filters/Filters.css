@@ -1,4 +1,4 @@
-.checkbox-filter-style {
+.selectable-input-filter {
   display: inline-flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -7,8 +7,40 @@
   font-weight: 400;
 }
 
-.checkbox-filter-style label {
+.selectable-input-filter label {
   font-weight: 600;
   letter-spacing: 1px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.input-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.ratings-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 0;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.slider-input-filter {
+  display: flex;
+  align-items: center;
+}
+
+.rating-star {
+  margin-right: 0.25rem;
 }

@@ -56,7 +56,9 @@
 }
 
 button,
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
   cursor: pointer;
 }
 

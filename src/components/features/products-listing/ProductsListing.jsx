@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import { useAuth } from "../../../core/contexts/authentication-context/AuthenticationContext";
+import Filters from "./filters/Filters";
 
 const ProductsListing = () => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const ProductsListing = () => {
   return (
     <>
       <h2>Products Listing</h2>
+      <Filters />
       <div
         style={{
           display: "flex",
@@ -33,7 +35,7 @@ const ProductsListing = () => {
       >
         {products.length > 0 &&
           products.map((product) => {
-            const { _id, title, author, price, categoryName } = product;
+            const { _id, title, author, price, categoryName, rating } = product;
             return (
               <div
                 key={_id}
@@ -48,6 +50,7 @@ const ProductsListing = () => {
                 <p>{author}</p>
                 <p>{price}</p>
                 <p>{categoryName}</p>
+                <p>{rating}⭐</p>
                 <Link to={`/product/${_id}`}>View details</Link>
                 <button
                   onClick={() =>
@@ -76,6 +79,7 @@ const ProductsListing = () => {
               </div>
             );
           })}
+        {products?.length < 1 && <h3>No products found.</h3>}
       </div>
     </>
   );
