@@ -55,7 +55,10 @@
   color: inherit;
 }
 
-button {
+button,
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
   cursor: pointer;
 }
 

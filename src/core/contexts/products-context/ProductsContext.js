@@ -4,6 +4,7 @@ import axios from "axios";
 import { productsReducer } from "../../reducers/products-reducer/ProductsReducerFunction";
 import { initialState } from "../../reducers/products-reducer/ProductsReducerInititalState";
 import { useAuth } from "../authentication-context/AuthenticationContext";
+import { updateListWithAppliedFilters } from "../../../utils/helper-functions/HelperFunctions";
 
 export const ProductsContext = createContext();
 
@@ -163,6 +164,47 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const handleFilterChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    const newAppliedFilterValues = {
+      ...state.appliedFilterValues,
+      [name]:
+        type === "checkbox"
+          ? checked
+            ? [...state.appliedFilterValues[name], value]
+            : state.appliedFilterValues[name].filter((elm) => elm !== value)
+          : value,
+    };
+    dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
+  };
+
+  useEffect(() => {
+    dispatch({ type: "LOADER_INITIATED" });
+    (async () => {
+      try {
+        const response = await axios.get("/api/products");
+        const {
+          status,
+          data: { products },
+        } = response;
+        if (status === 200 || status === 201) {
+          dispatch({
+            type: "FETCH_PRODUCTS_DATA",
+            payload: updateListWithAppliedFilters(
+              products,
+              state.appliedFilterValues
+            ),
+          });
+        }
+      } catch (error) {
+        console.error(error);
+        dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      } finally {
+        dispatch({ type: "LOADER_STOPPED" });
+      }
+    })();
+  }, [state.appliedFilterValues]);
+
   return (
     <ProductsContext.Provider
       value={{
@@ -173,6 +215,7 @@ export const ProductsProvider = ({ children }) => {
         updateCartProduct,
         removeProductFromCart,
         removeProductFromWishlist,
+        handleFilterChange,
       }}
     >
       {children}
