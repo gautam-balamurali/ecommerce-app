@@ -21,6 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     if (appliedFilterValues.searchValue.length > 0)
       setShowDropdown(products.length > 0 && location.pathname !== "/products");
+    else setShowDropdown(false);
   }, [
     showDropdown,
     appliedFilterValues.searchValue,
