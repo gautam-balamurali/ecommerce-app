@@ -29,6 +29,10 @@ const Navbar = () => {
     location.pathname,
   ]);
 
+  useEffect(() => {
+    if (location.pathname !== "/products") clearFilters();
+  }, [location.pathname]);
+
   const handleDropdownItemClick = (productId) => {
     setShowDropdown(false);
     clearFilters();

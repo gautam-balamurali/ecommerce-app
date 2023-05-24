@@ -180,11 +180,10 @@ export const ProductsProvider = ({ children }) => {
 
   const filterByCategory = (categoryName) => {
     const newAppliedFilterValues = {
-      ...state.appliedFilterValues,
-      checkboxValues: [
-        ...state.appliedFilterValues.checkboxValues,
-        categoryName,
-      ],
+      searchValue: "",
+      checkboxValues: [categoryName],
+      radioButtonValue: "",
+      rangeValue: 5,
     };
     dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
   };
