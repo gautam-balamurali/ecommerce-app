@@ -25,6 +25,7 @@ import {
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
+import { v4 as uuid } from "uuid";
 
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -49,7 +50,23 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+          address: [
+            {
+              _id: uuid(),
+              name: "John Doe",
+              street: "B-16 , 60ft Kursi Road, Jankipuram",
+              city: "Lucknow",
+              state: "U.P",
+              country: "India",
+              zipCode: "226011",
+              mobile: "912345678",
+            },
+          ],
+        })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));

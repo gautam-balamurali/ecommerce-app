@@ -178,6 +178,27 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
   };
 
+  const filterByCategory = (categoryName) => {
+    const newAppliedFilterValues = {
+      ...state.appliedFilterValues,
+      checkboxValues: [
+        ...state.appliedFilterValues.checkboxValues,
+        categoryName,
+      ],
+    };
+    dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
+  };
+
+  const clearFilters = () => {
+    const newAppliedFilterValues = {
+      searchValue: "",
+      checkboxValues: [],
+      radioButtonValue: "",
+      rangeValue: 5,
+    };
+    dispatch({ type: "CLEAR_FILTERS", payload: { ...newAppliedFilterValues } });
+  };
+
   useEffect(() => {
     dispatch({ type: "LOADER_INITIATED" });
     (async () => {
@@ -216,6 +237,8 @@ export const ProductsProvider = ({ children }) => {
         removeProductFromCart,
         removeProductFromWishlist,
         handleFilterChange,
+        filterByCategory,
+        clearFilters,
       }}
     >
       {children}
