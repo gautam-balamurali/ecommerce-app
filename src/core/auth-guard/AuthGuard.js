@@ -1,9 +1,9 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../contexts/authentication-context/AuthenticationContext";
+import { useAuthentication } from "../contexts/authentication-context/AuthenticationContext";
 
 export const AuthGuard = ({ children }) => {
   const location = useLocation();
-  const { token } = useAuth();
+  const { token } = useAuthentication();
 
   return token ? (
     children

@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
-import { useAuth } from "../../../core/contexts/authentication-context/AuthenticationContext";
+import { useAuthentication } from "../../../core/contexts/authentication-context/AuthenticationContext";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token } = useAuthentication();
 
   const {
     cart,
