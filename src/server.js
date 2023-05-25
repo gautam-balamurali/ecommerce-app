@@ -54,11 +54,11 @@ export function makeServer({ environment = "development" } = {}) {
           ...item,
           cart: [],
           wishlist: [],
-          address: [
+          addressHistory: [
             {
               _id: uuid(),
-              name: "John Doe",
-              street: "B-16 , 60ft Kursi Road, Jankipuram",
+              name: `${item.firstName} ${item.lastName}`,
+              street: "B-16, 60ft Kursi Road, Jankipuram",
               city: "Lucknow",
               state: "U.P",
               country: "India",
