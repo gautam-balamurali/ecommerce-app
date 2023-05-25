@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import "./Login.css";
-import { useAuth } from "../../../core/contexts/authentication-context/AuthenticationContext";
+import { useAuthentication } from "../../../core/contexts/authentication-context/AuthenticationContext";
 import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
@@ -10,8 +10,8 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { token, logInUser } = useAuth();
-  const { dispatch } = useProducts();
+  const { token, logInUser } = useAuthentication();
+  const { productsDispatch } = useProducts();
 
   const testLoginCredentials = {
     email: "adarshbalika@gmail.com",
@@ -34,15 +34,15 @@ const Login = () => {
   };
 
   const loginHandler = async (loginCredentials) => {
-    dispatch({ type: "LOADER_INITIATED" });
+    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const userDetails = await logInUser(loginCredentials);
-      dispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+      productsDispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
     } catch (error) {
       console.error(error);
-      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
     } finally {
-      dispatch({ type: "LOADER_STOPPED" });
+      productsDispatch({ type: "LOADER_STOPPED" });
     }
   };
 

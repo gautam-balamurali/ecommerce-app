@@ -1,8 +1,9 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+
+import "./Navbar.css";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
 import { useEffect, useState } from "react";
-import "./Navbar.css";
 
 const Navbar = () => {
   const {
@@ -30,7 +31,7 @@ const Navbar = () => {
   ]);
 
   useEffect(() => {
-    if (location.pathname !== "/products") clearFilters();
+    if (location.pathname !== "/products") clearFilters(); // eslint-disable-next-line
   }, [location.pathname]);
 
   const handleDropdownItemClick = (productId) => {

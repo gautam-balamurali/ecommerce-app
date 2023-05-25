@@ -2,30 +2,30 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
 import { productsReducer } from "../../reducers/products-reducer/ProductsReducerFunction";
-import { initialState } from "../../reducers/products-reducer/ProductsReducerInititalState";
-import { useAuth } from "../authentication-context/AuthenticationContext";
+import { productsReducerInitialState } from "../../reducers/products-reducer/ProductsReducerInititalState";
+import { useAuthentication } from "../authentication-context/AuthenticationContext";
 import { updateListWithAppliedFilters } from "../../../utils/helper-functions/HelperFunctions";
 
 export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(productsReducer, initialState);
-  const { token } = useAuth();
+  const [state, productsDispatch] = useReducer(productsReducer, productsReducerInitialState);
+  const { token } = useAuthentication();
 
   useEffect(() => {
     (async () => {
-      dispatch({ type: "LOADER_INITIATED" });
+      productsDispatch({ type: "LOADER_INITIATED" });
       try {
         const productsResponse = await axios.get("/api/products");
         if (productsResponse.status === 200)
-          dispatch({
+          productsDispatch({
             type: "FETCH_PRODUCTS_DATA",
             payload: productsResponse.data.products,
           });
 
         const categoriesResponse = await axios.get("/api/categories");
         if (categoriesResponse.status === 200)
-          dispatch({
+          productsDispatch({
             type: "FETCH_CATEGORIES_DATA",
             payload: categoriesResponse.data.categories,
           });
@@ -37,7 +37,7 @@ export const ProductsProvider = ({ children }) => {
             },
           });
           if (cartResponse.status === 200)
-            dispatch({
+            productsDispatch({
               type: "FETCH_CART_DATA",
               payload: cartResponse?.data?.cart,
             });
@@ -48,23 +48,26 @@ export const ProductsProvider = ({ children }) => {
             },
           });
           if (wishlistResponse.status === 200)
-            dispatch({
+            productsDispatch({
               type: "FETCH_WISHLIST_DATA",
               payload: wishlistResponse?.data?.wishlist,
             });
         }
       } catch (error) {
         console.error(error);
-        dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+        productsDispatch({
+          type: "FETCH_ERROR_DETAILS",
+          payload: error?.response,
+        });
       } finally {
-        dispatch({ type: "LOADER_STOPPED" });
+        productsDispatch({ type: "LOADER_STOPPED" });
       }
     })();
     // eslint-disable-next-line
   }, [token]);
 
   const addProductToCart = async (product) => {
-    dispatch({ type: "LOADER_INITIATED" });
+    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         "/api/user/cart",
@@ -72,20 +75,22 @@ export const ProductsProvider = ({ children }) => {
         { headers: { authorization: token } }
       );
       if (response.status === 200 || response.status === 201)
-        dispatch({
+        productsDispatch({
           type: "FETCH_CART_DATA",
           payload: response?.data?.cart,
         });
     } catch (error) {
       console.error(error);
-      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
-      dispatch({ type: "LOADER_STOPPED" });
+      productsDispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const updateCartProduct = async (productId, type) => {
-    dispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         `/api/user/cart/${productId}`,
@@ -93,39 +98,43 @@ export const ProductsProvider = ({ children }) => {
         { headers: { authorization: token } }
       );
       if (response.status === 200 || response.status === 201)
-        dispatch({
+        productsDispatch({
           type: "FETCH_CART_DATA",
           payload: response?.data?.cart,
         });
     } catch (error) {
       console.error(error);
-      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
-    } finally {
-      dispatch({ type: "LOADER_STOPPED" });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     }
   };
 
   const removeProductFromCart = async (productId) => {
-    dispatch({ type: "LOADER_INITIATED" });
+    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.delete(`/api/user/cart/${productId}`, {
         headers: { authorization: token },
       });
       if (response.status === 200 || response.status === 201)
-        dispatch({
+        productsDispatch({
           type: "FETCH_CART_DATA",
           payload: response?.data?.cart,
         });
     } catch (error) {
       console.error(error);
-      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
-      dispatch({ type: "LOADER_STOPPED" });
+      productsDispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const addProductToWishlist = async (product) => {
-    dispatch({ type: "LOADER_INITIATED" });
+    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         "/api/user/wishlist",
@@ -133,34 +142,40 @@ export const ProductsProvider = ({ children }) => {
         { headers: { authorization: token } }
       );
       if (response.status === 200 || response.status === 201)
-        dispatch({
+        productsDispatch({
           type: "FETCH_WISHLIST_DATA",
           payload: response?.data?.wishlist,
         });
     } catch (error) {
       console.error(error);
-      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
-      dispatch({ type: "LOADER_STOPPED" });
+      productsDispatch({ type: "LOADER_STOPPED" });
     }
   };
 
   const removeProductFromWishlist = async (productId) => {
-    dispatch({ type: "LOADER_INITIATED" });
+    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.delete(`/api/user/wishlist/${productId}`, {
         headers: { authorization: token },
       });
       if (response.status === 200 || response.status === 201)
-        dispatch({
+        productsDispatch({
           type: "FETCH_WISHLIST_DATA",
           payload: response?.data?.wishlist,
         });
     } catch (error) {
       console.error(error);
-      dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
-      dispatch({ type: "LOADER_STOPPED" });
+      productsDispatch({ type: "LOADER_STOPPED" });
     }
   };
 
@@ -175,7 +190,10 @@ export const ProductsProvider = ({ children }) => {
             : state.appliedFilterValues[name].filter((elm) => elm !== value)
           : value,
     };
-    dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
+    productsDispatch({
+      type: "APPLY_FILTERS",
+      payload: { ...newAppliedFilterValues },
+    });
   };
 
   const filterByCategory = (categoryName) => {
@@ -185,7 +203,10 @@ export const ProductsProvider = ({ children }) => {
       radioButtonValue: "",
       rangeValue: 5,
     };
-    dispatch({ type: "APPLY_FILTERS", payload: { ...newAppliedFilterValues } });
+    productsDispatch({
+      type: "APPLY_FILTERS",
+      payload: { ...newAppliedFilterValues },
+    });
   };
 
   const clearFilters = () => {
@@ -195,11 +216,14 @@ export const ProductsProvider = ({ children }) => {
       radioButtonValue: "",
       rangeValue: 5,
     };
-    dispatch({ type: "CLEAR_FILTERS", payload: { ...newAppliedFilterValues } });
+    productsDispatch({
+      type: "CLEAR_FILTERS",
+      payload: { ...newAppliedFilterValues },
+    });
   };
 
   useEffect(() => {
-    dispatch({ type: "LOADER_INITIATED" });
+    productsDispatch({ type: "LOADER_INITIATED" });
     (async () => {
       try {
         const response = await axios.get("/api/products");
@@ -208,7 +232,7 @@ export const ProductsProvider = ({ children }) => {
           data: { products },
         } = response;
         if (status === 200 || status === 201) {
-          dispatch({
+          productsDispatch({
             type: "FETCH_PRODUCTS_DATA",
             payload: updateListWithAppliedFilters(
               products,
@@ -218,9 +242,12 @@ export const ProductsProvider = ({ children }) => {
         }
       } catch (error) {
         console.error(error);
-        dispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+        productsDispatch({
+          type: "FETCH_ERROR_DETAILS",
+          payload: error?.response,
+        });
       } finally {
-        dispatch({ type: "LOADER_STOPPED" });
+        productsDispatch({ type: "LOADER_STOPPED" });
       }
     })();
   }, [state.appliedFilterValues]);
@@ -229,7 +256,7 @@ export const ProductsProvider = ({ children }) => {
     <ProductsContext.Provider
       value={{
         ...state,
-        dispatch,
+        productsDispatch,
         addProductToCart,
         addProductToWishlist,
         updateCartProduct,
