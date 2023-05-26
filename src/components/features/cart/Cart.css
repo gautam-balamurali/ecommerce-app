@@ -1,0 +1,152 @@
+.cart-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cart-items {
+  height: 400px;
+  width: fit-content;
+  overflow-y: auto;
+  border: 1px solid;
+}
+
+.cart-item {
+  border: 1px solid;
+  height: 300px;
+  width: 200px;
+  margin: 0.5rem;
+}
+
+/* checkout price */
+.price-layout {
+  width: max-content;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: start;
+  padding: 1rem;
+  font-family: sans-serif;
+  height: fit-content;
+}
+
+.price-layout h1 {
+  font-size: 2.7rem;
+  margin: 1rem auto;
+}
+
+.review-card {
+  border: 5px solid #7bc57b;
+  padding: 1rem;
+}
+
+.item-info-headings {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem auto 0 auto;
+}
+
+.cart-items-info {
+  border: 1px solid #ccc;
+  margin-top: -1rem;
+  height: 70px;
+  overflow-y: auto;
+}
+
+.item-info-contents {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto 10px auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 50px;
+}
+
+.item-img {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+}
+
+.item-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-heading {
+  /* margin-left: 1rem; */
+}
+
+.item-price-headings {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+
+.quantity-heading,
+.total-heading {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.quantity,
+.total {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.quantity-heading {
+  padding-right: 10px;
+}
+
+.quantity {
+  margin-right: 1rem;
+}
+
+.total-heading {
+  /* margin-right: 10px; */
+}
+
+.total {
+  margin-right: 5px;
+}
+
+.item-desc {
+  line-height: 25px;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  width: 65%;
+  margin-bottom: 2rem;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.order-btn {
+  border-radius: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #7bc57b;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.razor-pay {
+  text-align: center;
+  margin: 0.5rem auto auto auto;
+  font-style: italic;
+}
