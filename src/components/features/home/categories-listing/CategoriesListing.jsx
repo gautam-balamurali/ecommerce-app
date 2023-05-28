@@ -11,9 +11,7 @@ const CategoriesListing = () => {
   };
 
   return (
-    <div
-      style={{ display: "flex", margin: "1rem auto", justifyContent: "center" }}
-    >
+    <div style={{ display: "flex", justifyContent: "center" }}>
       {categories.length > 0 &&
         categories.map(({ _id, categoryName, description }) => (
           <div
@@ -23,7 +21,6 @@ const CategoriesListing = () => {
               border: "1px solid",
               height: "300px",
               width: "200px",
-              margin: "1rem",
               cursor: "pointer",
             }}
           >
