@@ -1,0 +1,4 @@
+.products-listing-section{
+    display: flex;
+    flex-direction: column;
+}

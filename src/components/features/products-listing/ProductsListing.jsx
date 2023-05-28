@@ -23,13 +23,11 @@ const ProductsListing = () => {
     wishlist.find((product) => product._id === productId);
 
   return (
-    <>
-      <h2>Products Listing</h2>
+    <div className="products-listing-section">
       <Filters />
       <div
         style={{
           display: "flex",
-          margin: "1rem auto",
           justifyContent: "center",
         }}
       >
@@ -43,7 +41,6 @@ const ProductsListing = () => {
                   border: "1px solid",
                   height: "300px",
                   width: "200px",
-                  margin: "1rem",
                 }}
               >
                 <h3>{title}</h3>
@@ -81,7 +78,7 @@ const ProductsListing = () => {
           })}
         {products?.length < 1 && <h3>No products found.</h3>}
       </div>
-    </>
+    </div>
   );
 };
 
