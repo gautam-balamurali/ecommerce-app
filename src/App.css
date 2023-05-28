@@ -1,5 +1,11 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
-  text-align: center;
+  max-width: 100vw;
 }
 
 .App-logo {
@@ -50,9 +56,8 @@
   margin: 1rem;
 }
 
-.title-link {
+.nav-link {
   text-decoration: none;
-  color: inherit;
 }
 
 button,
