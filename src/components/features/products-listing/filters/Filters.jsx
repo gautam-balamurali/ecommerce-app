@@ -1,50 +1,22 @@
 import { FaFilter } from "react-icons/fa";
-import { MdClose, MdFilterList } from "react-icons/md";
-import { useState } from "react";
 
 import "./Filters.css";
 import { useProducts } from "../../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../../shared/input-field-component/InputField";
 import { priceFieldFilters } from "../../../../config/AppConfig";
 
-const Filters = () => {
-  const [toggleFilterSection, setToggleFilterSection] = useState(false);
-  const {
-    categories,
-    handleFilterChange,
-    appliedFilterValues,
-    clearFilters,
-    products,
-  } = useProducts();
+const Filters = ({ className }) => {
+  const { categories, handleFilterChange, appliedFilterValues, clearFilters } =
+    useProducts();
 
   const categoriesFieldFilters = categories.reduce(
     (acc, { categoryName }) => [...acc, categoryName],
     []
   );
 
-  const filterHamburgerHandler = () => {
-    setToggleFilterSection((prev) => !prev);
-  };
-
   return (
-    <div className="filters-wrapper">
-      <div className="toggle-filter-section">
-        <div className="toggle-filter-wrapper">
-          <div className="toggle-filter-btn">
-            {toggleFilterSection ? (
-              <MdClose size={15} onClick={filterHamburgerHandler} />
-            ) : (
-              <MdFilterList size={15} onClick={filterHamburgerHandler} />
-            )}
-          </div>
-          <span>{toggleFilterSection ? "Close" : "Apply Filters"}</span>
-        </div>
-        {products.length > 0 && <p>{products.length} results</p>}
-      </div>
-      <div
-        className="filter-section"
-        style={{ display: toggleFilterSection ? "block" : "none" }}
-      >
+    <div className={className}>
+      <div className="filter-section">
         <fieldset>
           <div className="filter-section-heading">
             <legend>

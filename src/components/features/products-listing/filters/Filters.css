@@ -1,21 +1,3 @@
-.filters-wrapper {
-  padding-bottom: 1rem;
-}
-
-.toggle-filter-section {
-  width: 100%;
-  background: whitesmoke;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.toggle-filter-btn {
-  cursor: pointer;
-  display: inline-block;
-}
-
 .filter-section {
   position: relative;
 }
@@ -106,4 +88,14 @@ input[type="radio"] {
 
 .rating-star {
   padding-right: 0.25rem;
+}
+
+.hide-filters-wrapper {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-filters-wrapper {
+    display: block;
+  }
 }
