@@ -98,4 +98,8 @@ input[type="radio"] {
   .hide-filters-wrapper {
     display: block;
   }
+
+  .filter-section fieldset {
+    z-index: 0;
+  }
 }

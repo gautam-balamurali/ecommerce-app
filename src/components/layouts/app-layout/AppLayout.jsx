@@ -1,5 +1,6 @@
 import AppRoutes from "../../../core/app-routes/AppRoutes";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
+import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
 const AppLayout = () => {
@@ -15,6 +16,7 @@ const AppLayout = () => {
       )}
       <Header />
       <AppRoutes />
+      <Footer />
     </>
   );
 };
