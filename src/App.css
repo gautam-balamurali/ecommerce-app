@@ -8,10 +8,10 @@
   max-width: 100vw;
 }
 
-/* .section {
+.section {
   min-height: calc(100vh - 4rem - 4rem);
-  overflow-y: scroll;
-} */
+  /* overflow-y: scroll; */
+}
 
 .App-logo {
   height: 40vmin;

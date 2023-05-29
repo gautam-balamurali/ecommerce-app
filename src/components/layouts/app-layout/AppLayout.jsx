@@ -15,7 +15,9 @@ const AppLayout = () => {
         </>
       )}
       <Header />
-      <AppRoutes />
+      <div className="section">
+        <AppRoutes />
+      </div>
       <Footer />
     </>
   );

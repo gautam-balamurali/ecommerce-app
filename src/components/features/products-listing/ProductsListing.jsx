@@ -43,7 +43,7 @@ const ProductsListing = () => {
           </div>
           <span>{toggleFilterSection ? "Close" : "Apply Filters"}</span>
         </div>
-        {products.length > 0 && <p>{products.length} results</p>}
+        {products.length > 0 && <p>Showing {products.length} results</p>}
       </div>
       <div className="filters-products-layout">
         <Filters
