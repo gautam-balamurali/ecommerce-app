@@ -42,10 +42,16 @@ const SignUp = () => {
     productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const userDetails = await signUpUser(signUpCredentials);
-      productsDispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+      productsDispatch({
+        type: "UPDATE_CART_AND_WISHLIST",
+        payload: userDetails,
+      });
     } catch (error) {
       console.error(error);
-      productsDispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
       productsDispatch({ type: "LOADER_STOPPED" });
     }
@@ -132,7 +138,7 @@ const SignUp = () => {
         <button onClick={randomCredentialsClickHandler} className="signup-btn">
           Generate Random Credentials
         </button>
-        <p>
+        <p className="form-info-last">
           Already have an account?
           <Link to={"/login"} style={{ textDecoration: "none" }}>
             <span className="login"> Log In </span>
