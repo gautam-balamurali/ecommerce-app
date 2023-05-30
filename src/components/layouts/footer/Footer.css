@@ -1,5 +1,4 @@
 .footer {
-  /* padding: 1rem 2rem; */
   width: 100%;
   position: relative;
   background-color: lightblue;
@@ -92,10 +91,10 @@
 }
 
 @media (min-width: 1024px) {
-    .website-info {
-      width: 20%;
-    }
+  .website-info {
+    width: 20%;
   }
+}
 
 @media (min-width: 1280px) {
   .website-info {
