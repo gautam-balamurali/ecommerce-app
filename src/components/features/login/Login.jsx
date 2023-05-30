@@ -37,10 +37,16 @@ const Login = () => {
     productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const userDetails = await logInUser(loginCredentials);
-      productsDispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+      productsDispatch({
+        type: "UPDATE_CART_AND_WISHLIST",
+        payload: userDetails,
+      });
     } catch (error) {
       console.error(error);
-      productsDispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
       productsDispatch({ type: "LOADER_STOPPED" });
     }
@@ -99,7 +105,7 @@ const Login = () => {
         <button onClick={loginAsAGuestClickHandler} className="login-btn">
           Generate Guest Credentials
         </button>
-        <p>
+        <p className="form-info-last">
           Don't have an account?
           <Link to={"/sign-up"} style={{ textDecoration: "none" }}>
             <span className="sign-up"> Sign Up </span>
