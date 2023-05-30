@@ -5,6 +5,7 @@ import { useAuthentication } from "../../../core/contexts/authentication-context
 import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,15 +14,17 @@ const Login = () => {
   const { token, logInUser } = useAuthentication();
   const { productsDispatch } = useProducts();
 
-  const testLoginCredentials = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
-  };
-
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const testLoginCredentials = {
+    email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
+  };
 
   const loginCredentialsChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -57,6 +60,10 @@ const Login = () => {
     loginHandler(loginCredentials);
   };
 
+  const toggleShowHidePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   useEffect(() => {
     if (token)
       navigate(location?.state?.from.pathname || "/", { replace: true });
@@ -86,11 +93,18 @@ const Login = () => {
             />
           </div>
           <div className="pswd-section">
+            <div
+              className="eye-icon"
+              aria-hidden="true"
+              onClick={toggleShowHidePassword}
+            >
+              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            </div>
             <InputField
               className={"pswd-txt-inpt"}
               label={"Password"}
               label_class={"pswd"}
-              type={"password"}
+              type={showPassword ? "text" : "password"}
               name={"password"}
               value={loginCredentials.password}
               placeholder={"*******"}
