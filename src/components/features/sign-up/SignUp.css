@@ -86,6 +86,15 @@
   font-weight: bold;
 }
 
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+}
+
 @media (min-width: 412px) and (max-width: 500px) {
   .signup-page {
     height: calc(100vh - 10rem - 6rem);
