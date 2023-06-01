@@ -15,7 +15,7 @@ const Filters = ({ className }) => {
   );
 
   return (
-    <div className={className}>
+    <div className={className + " overlay"}>
       <div className="filter-section">
         <fieldset>
           <div className="filter-section-heading">
