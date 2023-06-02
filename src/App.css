@@ -6,6 +6,11 @@
 
 .App {
   max-width: 100vw;
+  /* min-height: 100vh; */
+}
+
+.section {
+  min-height: calc(100vh - 9.475rem - 9.475rem);
 }
 
 .App-logo {

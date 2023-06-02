@@ -5,6 +5,7 @@ import { useAuthentication } from "../../../core/contexts/authentication-context
 import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,15 +14,17 @@ const Login = () => {
   const { token, logInUser } = useAuthentication();
   const { productsDispatch } = useProducts();
 
-  const testLoginCredentials = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
-  };
-
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const testLoginCredentials = {
+    email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
+  };
 
   const loginCredentialsChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -37,10 +40,16 @@ const Login = () => {
     productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const userDetails = await logInUser(loginCredentials);
-      productsDispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+      productsDispatch({
+        type: "UPDATE_CART_AND_WISHLIST",
+        payload: userDetails,
+      });
     } catch (error) {
       console.error(error);
-      productsDispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
       productsDispatch({ type: "LOADER_STOPPED" });
     }
@@ -49,6 +58,10 @@ const Login = () => {
   const submitClickHandler = (event) => {
     event.preventDefault();
     loginHandler(loginCredentials);
+  };
+
+  const toggleShowHidePassword = () => {
+    setShowPassword((prev) => !prev);
   };
 
   useEffect(() => {
@@ -80,11 +93,18 @@ const Login = () => {
             />
           </div>
           <div className="pswd-section">
+            <div
+              className="eye-icon"
+              aria-hidden="true"
+              onClick={toggleShowHidePassword}
+            >
+              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            </div>
             <InputField
               className={"pswd-txt-inpt"}
               label={"Password"}
               label_class={"pswd"}
-              type={"password"}
+              type={showPassword ? "text" : "password"}
               name={"password"}
               value={loginCredentials.password}
               placeholder={"*******"}
@@ -99,7 +119,7 @@ const Login = () => {
         <button onClick={loginAsAGuestClickHandler} className="login-btn">
           Generate Guest Credentials
         </button>
-        <p>
+        <p className="form-info-last">
           Don't have an account?
           <Link to={"/sign-up"} style={{ textDecoration: "none" }}>
             <span className="sign-up"> Sign Up </span>

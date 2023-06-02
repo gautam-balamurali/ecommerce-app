@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import "./UserProfile.css";
 import { useAuthentication } from "../../../core/contexts/authentication-context/AuthenticationContext";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import { useState } from "react";
@@ -22,6 +23,8 @@ const UserProfile = () => {
     navigate("/");
   };
 
+  const userProfileCategories = ["About", "Addresses"];
+
   const [isModalOpen, setModalOpen] = useState(false);
   const [isEditFormEnabled, setEditFormEnabled] = useState(false);
 
@@ -35,6 +38,10 @@ const UserProfile = () => {
     state: "",
     country: "",
   });
+
+  const [isCategorySelected, setCategorySelected] = useState(
+    userProfileCategories[0]
+  );
 
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -77,191 +84,255 @@ const UserProfile = () => {
     handleCloseModal();
   };
 
+  const categoryClickHandler = (category) => {
+    setCategorySelected(category);
+  };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        textAlign: "start",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "1rem auto",
-      }}
-    >
-      {/* user profile */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          margin: "1rem",
-        }}
-      >
-        <div
-          style={{
-            margin: "1rem",
-            border: "1px solid",
-            padding: "1rem",
-          }}
-        >
-          <h2>User Profile Details</h2>
-          <p>First Name: {firstName}</p>
-          <p>Last Name: {lastName}</p>
-          <p>Email: {email}</p>
-          <button onClick={logOutClickHandler}>Log Out</button>
-        </div>
-      </div>
-      {/* addressHistory */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          margin: "1rem",
-        }}
-      >
-        <div
-          style={{
-            margin: "1rem",
-            border: "1px solid",
-            padding: "1rem",
-          }}
-        >
-          <h2>Address Details</h2>
-          {addressHistory?.length > 0 &&
-            addressHistory.map((addressField) => {
-              const {
-                _id,
-                name,
-                mobile,
-                street,
-                city,
-                zipCode,
-                state,
-                country,
-              } = addressField;
-              return (
-                <div key={_id}>
-                  <span>{name}</span>,<span> {mobile}</span>
-                  <br />
-                  <span>{street}</span>
-                  <br />
-                  <span> {city}</span>
-                  <br />
-                  <span> {zipCode}</span>,<span> {state}</span>
-                  <br />
-                  <span>{country}</span>
-                  <div>
-                    <button onClick={() => editButtonClickHandler(_id)}>
-                      Edit
-                    </button>
-                    <button onClick={() => deleteAddress(_id)}>Delete</button>
-                  </div>
-                  <hr />
-                </div>
-              );
-            })}
-          <button onClick={handleOpenModal}>Add New</button>
-          <CustomModal isOpen={isModalOpen} onClose={handleCloseModal}>
-            <form
-              className="address-form"
-              onSubmit={submitClickHandler}
-              autoComplete="off"
+    <div className="user-profile-section">
+      <h2 className="greetings">
+        Hi{" "}
+        <span className="user-name">
+          {firstName} {lastName}
+        </span>
+        ! 🤟🏼
+      </h2>
+      <hr className="separator" />
+      <nav className="profile-categories-list">
+        <ul>
+          {userProfileCategories.map((category, index) => (
+            <li
+              className={
+                isCategorySelected === category
+                  ? "category-name-active"
+                  : "category-name"
+              }
+              key={index}
+              onClick={() => categoryClickHandler(category)}
             >
-              <h2>Add New Address</h2>
-              <div className="name-section">
-                <InputField
-                  className={"name-txt-inpt"}
-                  label={"Name"}
-                  label_class={"name"}
-                  type={"text"}
-                  name={"name"}
-                  value={currentAddressFormFields.name}
-                  placeholder={"John Doe"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
+              {category}
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className="user-profile-contents">
+        <div className="category-content">
+          {isCategorySelected === "About" && (
+            <div className="about-content">
+              <img
+                className="user-dp"
+                src="https://geektrust.sgp1.digitaloceanspaces.com/assets/svg/avatar.svg"
+                alt="display pic"
+              />
+              <div className="user-details">
+                <p className="about-label">Full Name</p>
+                <p className="about-value">
+                  {firstName} {lastName}
+                </p>
+                <p className="about-label">Email Address</p>
+                <p className="about-value">{email}</p>
               </div>
-              <div className="mobile-section">
-                <InputField
-                  className={"mobile-txt-inpt"}
-                  label={"Mobile"}
-                  label_class={"mobile"}
-                  type={"tel"}
-                  name={"mobile"}
-                  value={currentAddressFormFields.mobile}
-                  placeholder={"1234567890"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
-              </div>
-              <div className="street-section">
-                <InputField
-                  className={"street-txt-inpt"}
-                  label={"Street"}
-                  label_class={"street"}
-                  type={"text"}
-                  name={"street"}
-                  value={currentAddressFormFields.street}
-                  placeholder={"420/69, Random Street"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
-              </div>
-              <div className="city-section">
-                <InputField
-                  className={"city-txt-inpt"}
-                  label={"City"}
-                  label_class={"city"}
-                  type={"text"}
-                  name={"city"}
-                  value={currentAddressFormFields.city}
-                  placeholder={"Lucknow"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
-              </div>
-              <div className="zipcode-section">
-                <InputField
-                  className={"zipcode-txt-inpt"}
-                  label={"Postal Code"}
-                  label_class={"zipcode"}
-                  type={"number"}
-                  name={"zipCode"}
-                  value={currentAddressFormFields.zipCode}
-                  placeholder={"123456"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
-              </div>
-              <div className="state-section">
-                <InputField
-                  className={"state-txt-inpt"}
-                  label={"State"}
-                  label_class={"state"}
-                  type={"text"}
-                  name={"state"}
-                  value={currentAddressFormFields.state}
-                  placeholder={"Uttar Pradesh"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
-              </div>
-              <div className="country-section">
-                <InputField
-                  className={"country-txt-inpt"}
-                  label={"Country"}
-                  label_class={"country"}
-                  type={"text"}
-                  name={"country"}
-                  value={currentAddressFormFields.country}
-                  placeholder={"India"}
-                  onChangeFunction={currentAddressFormFieldsChangeHandler}
-                  required={true}
-                />
-              </div>
-              <button type="submit" className="submit-btn">
-                Submit
+              <button className="logout-btn" onClick={logOutClickHandler}>
+                Log Out
               </button>
-            </form>
-          </CustomModal>
+            </div>
+          )}
+          {isCategorySelected === "Addresses" && (
+            <div className="addresses">
+              <div className="addresses-content">
+                {addressHistory?.length > 0 &&
+                  addressHistory.map((addressField, index) => {
+                    const {
+                      _id,
+                      name,
+                      mobile,
+                      street,
+                      city,
+                      zipCode,
+                      state,
+                      country,
+                    } = addressField;
+                    return (
+                      <label className="address-wrapper" key={_id}>
+                        <input
+                          type={"radio"}
+                          name={"addressRadioButtonValue"}
+                          value={_id}
+                        />
+                        <div className="address">
+                          <h4>{name}</h4>
+                          <p>
+                            <span>{mobile}</span>
+                          </p>
+                          <p>
+                            <span>{street}</span>
+                          </p>
+                          <p>
+                            <span>{city}</span>
+                          </p>
+                          <p>
+                            <span> {zipCode}</span>,<span> {state}</span>
+                          </p>
+                          <p>
+                            <span>{country}</span>
+                          </p>
+                          <div className="address-configuration-btns">
+                            <button
+                              className="address-action-btn"
+                              onClick={() => editButtonClickHandler(_id)}
+                            >
+                              Update
+                            </button>
+                            <button
+                              className="address-action-btn"
+                              onClick={() => deleteAddress(_id)}
+                            >
+                              Remove
+                            </button>
+                            {addressHistory.length > 1 &&
+                              index !== addressHistory.length - 1 && (
+                                <span className="scroll-txt">⏬</span>
+                              )}
+                          </div>
+                        </div>
+                      </label>
+                    );
+                  })}
+                <CustomModal isOpen={isModalOpen}>
+                  <form
+                    className="address-form"
+                    onSubmit={submitClickHandler}
+                    autoComplete="off"
+                  >
+                    <h2 className="address-form-heading">Add New Address</h2>
+                    <div className="name-mobile-section">
+                      <div className="name-section">
+                        <InputField
+                          className={"name-txt-inpt"}
+                          label={"Name"}
+                          label_class={"name"}
+                          type={"text"}
+                          name={"name"}
+                          value={currentAddressFormFields.name}
+                          placeholder={"John Doe"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                      <div className="mobile-section">
+                        <InputField
+                          className={"mobile-txt-inpt"}
+                          label={"Mobile"}
+                          label_class={"mobile"}
+                          type={"tel"}
+                          name={"mobile"}
+                          value={currentAddressFormFields.mobile}
+                          placeholder={"1234567890"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                    </div>
+                    <div className="street-section">
+                      <InputField
+                        className={"street-txt-inpt"}
+                        label={"Street"}
+                        label_class={"street"}
+                        type={"text"}
+                        name={"street"}
+                        value={currentAddressFormFields.street}
+                        placeholder={"420/69, Random Street"}
+                        onChangeFunction={currentAddressFormFieldsChangeHandler}
+                        required={true}
+                      />
+                    </div>
+                    <div className="city-zipcode-section">
+                      <div className="city-section">
+                        <InputField
+                          className={"city-txt-inpt"}
+                          label={"City"}
+                          label_class={"city"}
+                          type={"text"}
+                          name={"city"}
+                          value={currentAddressFormFields.city}
+                          placeholder={"Lucknow"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                      <div className="zipcode-section">
+                        <InputField
+                          className={"zipcode-txt-inpt"}
+                          label={"Postal Code"}
+                          label_class={"zipcode"}
+                          type={"number"}
+                          name={"zipCode"}
+                          value={currentAddressFormFields.zipCode}
+                          placeholder={"123456"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                    </div>
+                    <div className="state-country-section">
+                      <div className="state-section">
+                        <InputField
+                          className={"state-txt-inpt"}
+                          label={"State"}
+                          label_class={"state"}
+                          type={"text"}
+                          name={"state"}
+                          value={currentAddressFormFields.state}
+                          placeholder={"Uttar Pradesh"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                      <div className="country-section">
+                        <InputField
+                          className={"country-txt-inpt"}
+                          label={"Country"}
+                          label_class={"country"}
+                          type={"text"}
+                          name={"country"}
+                          value={currentAddressFormFields.country}
+                          placeholder={"India"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-action-btns">
+                      <button
+                        className="form-btn-close"
+                        onClick={handleCloseModal}
+                      >
+                        Close
+                      </button>
+                      <button type="submit" className="form-btn-submit">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </CustomModal>
+              </div>
+              <button className="add-new-address-btn" onClick={handleOpenModal}>
+                + Add New Address
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import "./CustomModal.css";
 
-const CustomModal = ({ isOpen, onClose, children }) => {
+const CustomModal = ({ isOpen, children }) => {
   if (!isOpen) return null;
 
   return (
@@ -8,9 +8,6 @@ const CustomModal = ({ isOpen, onClose, children }) => {
       <div className="modal">
         <div className="modal-content">
           {children}
-          <button className="modal-close-btn" onClick={onClose}>
-            Close
-          </button>
         </div>
       </div>
     </div>

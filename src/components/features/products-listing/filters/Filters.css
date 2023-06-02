@@ -1,24 +1,61 @@
+.filter-section {
+  position: relative;
+}
+
+.filter-section fieldset {
+  padding: 10px 1rem;
+  width: fit-content;
+  position: absolute;
+  background-color: whitesmoke;
+  z-index: 999;
+  border: none;
+  border-radius: 0 0 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  /* max-height: 50vh;
+  overflow-y: scroll; */
+  min-height: calc(100vh - 4rem - 4rem);
+}
+
+.filter-section-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-filters-btn {
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  font-weight: 600;
+}
+
+.filter-category {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  justify-content: space-around;
+}
+
 .selectable-input-filter {
   display: inline-flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  margin: auto 1rem;
   font-size: 1rem;
   font-weight: 400;
+  padding-left: 10px;
+  padding-top: 8px;
 }
 
 .selectable-input-filter label {
-  font-weight: 600;
+  /* font-weight: 500; */
   letter-spacing: 1px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); */
+  padding-left: 5px;
 }
 
-.input-slider {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  outline: none;
+.selectable-input-filter input[type="checkbox"],
+input[type="radio"] {
+  vertical-align: middle;
 }
 
 .ratings-filter {
@@ -27,7 +64,15 @@
   justify-content: space-between;
   align-items: flex-start;
   width: fit-content;
-  margin: 0;
+  padding-left: 10px;
+}
+
+.input-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  outline: none;
 }
 
 .slider-labels {
@@ -42,5 +87,19 @@
 }
 
 .rating-star {
-  margin-right: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.hide-filters-wrapper {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-filters-wrapper {
+    display: block;
+  }
+
+  .filter-section fieldset {
+    z-index: 0;
+  }
 }

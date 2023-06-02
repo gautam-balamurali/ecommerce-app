@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
 }
 
 .modal {
@@ -19,11 +20,4 @@
 
 .modal-content {
   margin: 1rem;
-}
-
-.modal-close-btn {
-  border-radius: 5px;
-  padding: 8px 16px;
-  border: none;
-  background-color: #ccc;
 }

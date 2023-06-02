@@ -5,6 +5,7 @@ import { useAuthentication } from "../../../core/contexts/authentication-context
 import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -12,6 +13,15 @@ const SignUp = () => {
 
   const { token, signUpUser } = useAuthentication();
   const { productsDispatch } = useProducts();
+
+  const [signUpCredentials, setSignUpCredentials] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const testSignUpCredentials = {
     firstName: "John",
@@ -21,13 +31,6 @@ const SignUp = () => {
     )}@neog.camp`,
     password: "johnDoe",
   };
-
-  const [signUpCredentials, setSignUpCredentials] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
 
   const signUpCredentialsChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -42,10 +45,16 @@ const SignUp = () => {
     productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const userDetails = await signUpUser(signUpCredentials);
-      productsDispatch({ type: "UPDATE_CART_AND_WISHLIST", payload: userDetails });
+      productsDispatch({
+        type: "UPDATE_CART_AND_WISHLIST",
+        payload: userDetails,
+      });
     } catch (error) {
       console.error(error);
-      productsDispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+      productsDispatch({
+        type: "FETCH_ERROR_DETAILS",
+        payload: error?.response,
+      });
     } finally {
       productsDispatch({ type: "LOADER_STOPPED" });
     }
@@ -54,6 +63,10 @@ const SignUp = () => {
   const submitClickHandler = (event) => {
     event.preventDefault();
     signUpHandler(signUpCredentials);
+  };
+
+  const toggleShowHidePassword = () => {
+    setShowPassword((prev) => !prev);
   };
 
   useEffect(() => {
@@ -113,11 +126,18 @@ const SignUp = () => {
             />
           </div>
           <div className="pswd-section">
+            <div
+              className="eye-icon"
+              aria-hidden="true"
+              onClick={toggleShowHidePassword}
+            >
+              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            </div>
             <InputField
               className={"pswd-txt-inpt"}
               label={"Password"}
               label_class={"pswd"}
-              type={"password"}
+              type={showPassword ? "text" : "password"}
               name={"password"}
               value={signUpCredentials.password}
               placeholder={"*******"}
@@ -132,7 +152,7 @@ const SignUp = () => {
         <button onClick={randomCredentialsClickHandler} className="signup-btn">
           Generate Random Credentials
         </button>
-        <p>
+        <p className="form-info-last">
           Already have an account?
           <Link to={"/login"} style={{ textDecoration: "none" }}>
             <span className="login"> Log In </span>
