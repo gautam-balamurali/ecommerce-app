@@ -198,38 +198,44 @@ const UserProfile = () => {
                       </label>
                     );
                   })}
-                <CustomModal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <CustomModal isOpen={isModalOpen}>
                   <form
                     className="address-form"
                     onSubmit={submitClickHandler}
                     autoComplete="off"
                   >
                     <h2 className="address-form-heading">Add New Address</h2>
-                    <div className="name-section">
-                      <InputField
-                        className={"name-txt-inpt"}
-                        label={"Name"}
-                        label_class={"name"}
-                        type={"text"}
-                        name={"name"}
-                        value={currentAddressFormFields.name}
-                        placeholder={"John Doe"}
-                        onChangeFunction={currentAddressFormFieldsChangeHandler}
-                        required={true}
-                      />
-                    </div>
-                    <div className="mobile-section">
-                      <InputField
-                        className={"mobile-txt-inpt"}
-                        label={"Mobile"}
-                        label_class={"mobile"}
-                        type={"tel"}
-                        name={"mobile"}
-                        value={currentAddressFormFields.mobile}
-                        placeholder={"1234567890"}
-                        onChangeFunction={currentAddressFormFieldsChangeHandler}
-                        required={true}
-                      />
+                    <div className="name-mobile-section">
+                      <div className="name-section">
+                        <InputField
+                          className={"name-txt-inpt"}
+                          label={"Name"}
+                          label_class={"name"}
+                          type={"text"}
+                          name={"name"}
+                          value={currentAddressFormFields.name}
+                          placeholder={"John Doe"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                      <div className="mobile-section">
+                        <InputField
+                          className={"mobile-txt-inpt"}
+                          label={"Mobile"}
+                          label_class={"mobile"}
+                          type={"tel"}
+                          name={"mobile"}
+                          value={currentAddressFormFields.mobile}
+                          placeholder={"1234567890"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
                     </div>
                     <div className="street-section">
                       <InputField
@@ -244,61 +250,81 @@ const UserProfile = () => {
                         required={true}
                       />
                     </div>
-                    <div className="city-section">
-                      <InputField
-                        className={"city-txt-inpt"}
-                        label={"City"}
-                        label_class={"city"}
-                        type={"text"}
-                        name={"city"}
-                        value={currentAddressFormFields.city}
-                        placeholder={"Lucknow"}
-                        onChangeFunction={currentAddressFormFieldsChangeHandler}
-                        required={true}
-                      />
+                    <div className="city-zipcode-section">
+                      <div className="city-section">
+                        <InputField
+                          className={"city-txt-inpt"}
+                          label={"City"}
+                          label_class={"city"}
+                          type={"text"}
+                          name={"city"}
+                          value={currentAddressFormFields.city}
+                          placeholder={"Lucknow"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                      <div className="zipcode-section">
+                        <InputField
+                          className={"zipcode-txt-inpt"}
+                          label={"Postal Code"}
+                          label_class={"zipcode"}
+                          type={"number"}
+                          name={"zipCode"}
+                          value={currentAddressFormFields.zipCode}
+                          placeholder={"123456"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
                     </div>
-                    <div className="zipcode-section">
-                      <InputField
-                        className={"zipcode-txt-inpt"}
-                        label={"Postal Code"}
-                        label_class={"zipcode"}
-                        type={"number"}
-                        name={"zipCode"}
-                        value={currentAddressFormFields.zipCode}
-                        placeholder={"123456"}
-                        onChangeFunction={currentAddressFormFieldsChangeHandler}
-                        required={true}
-                      />
+                    <div className="state-country-section">
+                      <div className="state-section">
+                        <InputField
+                          className={"state-txt-inpt"}
+                          label={"State"}
+                          label_class={"state"}
+                          type={"text"}
+                          name={"state"}
+                          value={currentAddressFormFields.state}
+                          placeholder={"Uttar Pradesh"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
+                      <div className="country-section">
+                        <InputField
+                          className={"country-txt-inpt"}
+                          label={"Country"}
+                          label_class={"country"}
+                          type={"text"}
+                          name={"country"}
+                          value={currentAddressFormFields.country}
+                          placeholder={"India"}
+                          onChangeFunction={
+                            currentAddressFormFieldsChangeHandler
+                          }
+                          required={true}
+                        />
+                      </div>
                     </div>
-                    <div className="state-section">
-                      <InputField
-                        className={"state-txt-inpt"}
-                        label={"State"}
-                        label_class={"state"}
-                        type={"text"}
-                        name={"state"}
-                        value={currentAddressFormFields.state}
-                        placeholder={"Uttar Pradesh"}
-                        onChangeFunction={currentAddressFormFieldsChangeHandler}
-                        required={true}
-                      />
+                    <div className="form-action-btns">
+                      <button
+                        className="form-btn-close"
+                        onClick={handleCloseModal}
+                      >
+                        Close
+                      </button>
+                      <button type="submit" className="form-btn-submit">
+                        Submit
+                      </button>
                     </div>
-                    <div className="country-section">
-                      <InputField
-                        className={"country-txt-inpt"}
-                        label={"Country"}
-                        label_class={"country"}
-                        type={"text"}
-                        name={"country"}
-                        value={currentAddressFormFields.country}
-                        placeholder={"India"}
-                        onChangeFunction={currentAddressFormFieldsChangeHandler}
-                        required={true}
-                      />
-                    </div>
-                    <button type="submit" className="submit-btn">
-                      Submit
-                    </button>
                   </form>
                 </CustomModal>
               </div>
