@@ -47,6 +47,7 @@
 }
 
 .pswd-section {
+  position: relative;
   padding-bottom: 1rem;
 }
 
@@ -77,6 +78,15 @@
 .sign-up {
   color: #2874f0;
   font-weight: bold;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
 }
 
 @media (min-width: 768px) {

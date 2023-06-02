@@ -5,6 +5,7 @@ import { useAuthentication } from "../../../core/contexts/authentication-context
 import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -12,6 +13,15 @@ const SignUp = () => {
 
   const { token, signUpUser } = useAuthentication();
   const { productsDispatch } = useProducts();
+
+  const [signUpCredentials, setSignUpCredentials] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const testSignUpCredentials = {
     firstName: "John",
@@ -21,13 +31,6 @@ const SignUp = () => {
     )}@neog.camp`,
     password: "johnDoe",
   };
-
-  const [signUpCredentials, setSignUpCredentials] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
 
   const signUpCredentialsChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -60,6 +63,10 @@ const SignUp = () => {
   const submitClickHandler = (event) => {
     event.preventDefault();
     signUpHandler(signUpCredentials);
+  };
+
+  const toggleShowHidePassword = () => {
+    setShowPassword((prev) => !prev);
   };
 
   useEffect(() => {
@@ -119,11 +126,18 @@ const SignUp = () => {
             />
           </div>
           <div className="pswd-section">
+            <div
+              className="eye-icon"
+              aria-hidden="true"
+              onClick={toggleShowHidePassword}
+            >
+              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            </div>
             <InputField
               className={"pswd-txt-inpt"}
               label={"Password"}
               label_class={"pswd"}
-              type={"password"}
+              type={showPassword ? "text" : "password"}
               name={"password"}
               value={signUpCredentials.password}
               placeholder={"*******"}
