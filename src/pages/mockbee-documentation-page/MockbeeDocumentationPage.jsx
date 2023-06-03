@@ -1,4 +1,4 @@
-import MockbeeDocumentation from "../../features/mockbee-documentation/MockbeeDocumentation";
+import MockbeeDocumentation from "../../components/features/mockbee-documentation/MockbeeDocumentation";
 
 const MockbeeDocumentationPage = () => {
   return <MockbeeDocumentation />;

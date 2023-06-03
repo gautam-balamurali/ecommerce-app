@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import ProductCard from "../../features/individual-product/ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
+
+import ProductCard from "../../components/features/individual-product/ProductCard";
+import { useProducts } from "../../core/contexts/products-context/ProductsContext";
 
 const IndividualProductPage = () => {
   const { productsDispatch } = useProducts();
@@ -21,7 +22,10 @@ const IndividualProductPage = () => {
         if (status === 200 || status === 201) setProductDetails({ ...product });
       } catch (error) {
         console.error(error);
-        productsDispatch({ type: "FETCH_ERROR_DETAILS", payload: error?.response });
+        productsDispatch({
+          type: "FETCH_ERROR_DETAILS",
+          payload: error?.response,
+        });
       } finally {
         productsDispatch({ type: "LOADER_STOPPED" });
       }

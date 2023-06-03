@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+
+import "./Home.css";
 import CategoriesListing from "./categories-listing/CategoriesListing";
 
 const Home = () => {
@@ -8,7 +10,7 @@ const Home = () => {
       <Link to={"/products"}>
         <button>Go to store</button>
       </Link>
-      <h3>Categories</h3>
+      <h3>Filter by Categories</h3>
       <CategoriesListing />
     </>
   );
