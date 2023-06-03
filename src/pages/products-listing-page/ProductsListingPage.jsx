@@ -1,4 +1,4 @@
-import ProductsListing from "../../features/products-listing/ProductsListing";
+import ProductsListing from "../../components/features/products-listing/ProductsListing";
 
 const ProductsListingPage = () => {
   return <ProductsListing />;

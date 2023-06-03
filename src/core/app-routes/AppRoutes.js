@@ -1,17 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import Mockman from "mockman-js";
 
-import HomePage from "../../components/pages/home-page/HomePage";
-import MockbeeDocumentationPage from "../../components/pages/mockbee-documentation-page/MockbeeDocumentationPage";
-import CartPage from "../../components/pages/cart-page/CartPage";
-import WishlistPage from "../../components/pages/wishlist-page/WishlistPage";
-import IndividualProductPage from "../../components/pages/individual-product-page/IndividualProductPage";
-import PageNotFound from "../../components/pages/page-not-found-page/PageNotFound";
-import ProductsListingPage from "../../components/pages/products-listing-page/ProductsListingPage";
-import LoginPage from "../../components/pages/login-page/LoginPage";
+import HomePage from "../../pages/home-page/HomePage";
+import MockbeeDocumentationPage from "../../pages/mockbee-documentation-page/MockbeeDocumentationPage";
+import ProductsListingPage from "../../pages/products-listing-page/ProductsListingPage";
+import IndividualProductPage from "../../pages/individual-product-page/IndividualProductPage";
+import LoginPage from "../../pages/login-page/LoginPage";
+import SignUpPage from "../../pages/sign-up-page/SignUpPage";
+import PageNotFound from "../../pages/page-not-found-page/PageNotFound";
+import CartPage from "../../pages/cart-page/CartPage";
+import WishlistPage from "../../pages/wishlist-page/WishlistPage";
+import UserProfilePage from "../../pages/user-profile-page/UserProfilePage";
 import { AuthGuard } from "../auth-guard/AuthGuard";
-import UserProfilePage from "../../components/pages/user-profile-page/UserProfilePage";
-import SignUpPage from "../../components/pages/sign-up-page/SignUpPage";
 
 const AppRoutes = () => {
   return (
