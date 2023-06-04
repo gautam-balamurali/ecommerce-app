@@ -17,14 +17,16 @@ const CategoriesListing = () => {
       <h2>Categories</h2>
       <div className="category-contents">
         {categories.length > 0 &&
-          categories.map(({ _id, categoryName, description }) => (
+          categories.map(({ _id, categoryName, description, images }) => (
             <div
               onClick={() => categoryClickHandler(categoryName)}
               key={_id}
-              className="category"
+              className="category-container"
             >
-              <h3>{categoryName}</h3>
-              {/* <p>{description}</p> */}
+              <div className="category" title={description}>
+                <img src={images[0]} alt={categoryName} />
+              </div>
+              <h5>{categoryName}</h5>
             </div>
           ))}
       </div>

@@ -9,20 +9,40 @@
 .categories-section h2 {
   text-transform: uppercase;
   text-decoration: underline;
+  letter-spacing: 0.2em;
 }
 
 .category-contents {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 1rem;
   gap: 1rem;
   padding-top: 2rem;
   width: 100%;
 }
 
+.category-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .category {
-  border: 1px solid;
   border-radius: 50%;
-  height: 6rem;
-  width: 6rem;
+  height: 8rem;
+  width: 8rem;
+}
+
+.category img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.category-container h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
