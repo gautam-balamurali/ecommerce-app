@@ -30,7 +30,7 @@ export const categories = [
     description: "Official merchandise and accessories related to cricket.",
     images: [
       "https://res.cloudinary.com/dbe8yf165/image/upload/v1685884374/cricify/misc/mi-flip-flops-merchandise_sojpgh.jpg",
-      "https://res.cloudinary.com/dbe8yf165/image/upload/v1685881629/cricify/misc/IPL_Merchandise_Partners_zojayd.jpg",
+      "https://res.cloudinary.com/dbe8yf165/image/upload/v1685890077/cricify/misc/IPL_Merchandise_Partners_qot6wc.jpg",
     ],
   },
 ];

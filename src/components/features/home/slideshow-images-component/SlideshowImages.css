@@ -14,7 +14,7 @@
   border-radius: 0.4rem;
   background-size: contain;
   background-repeat: no-repeat;
-  animation: fade 20s infinite;
+  animation: fade 10s infinite;
 }
 
 @keyframes fade {
@@ -22,10 +22,10 @@
     opacity: 1;
   }
   33.33% {
-    opacity: 0.8;
+    opacity: 0.5;
   }
   66.66% {
-    opacity: 0.8;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
@@ -140,12 +140,18 @@
 
 @media (min-width: 1024px) and (min-height: 630px) {
   .img-container {
-    min-height: 45vh;
+    min-height: 28vh;
   }
 }
 
 @media (min-width: 1280px) and (min-height: 630px) {
   .img-container {
     min-height: 35vh;
+  }
+}
+
+@media (min-width: 1500px) and (min-height: 700px) {
+  .img-container {
+    min-height: 45vh;
   }
 }
