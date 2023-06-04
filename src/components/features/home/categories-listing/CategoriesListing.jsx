@@ -2,15 +2,25 @@ import { useNavigate } from "react-router-dom";
 
 import "./CategoriesListing.css";
 import { useProducts } from "../../../../core/contexts/products-context/ProductsContext";
+import { useEffect, useState } from "react";
 
 const CategoriesListing = () => {
   const { categories, filterByCategory } = useProducts();
   const navigate = useNavigate();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const categoryClickHandler = (categoryName) => {
     filterByCategory(categoryName);
     navigate("/products");
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % 2);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="categories-section">
@@ -24,7 +34,16 @@ const CategoriesListing = () => {
               className="category-container"
             >
               <div className="category" title={description}>
-                <img src={images[0]} alt={categoryName} />
+                {images.map((imageUrl, index) => (
+                  <img
+                    key={index}
+                    className={`carousel-image ${
+                      index === currentIndex ? "active" : ""
+                    }`}
+                    src={imageUrl}
+                    alt={categoryName}
+                  />
+                ))}
               </div>
               <h5>{categoryName}</h5>
             </div>
