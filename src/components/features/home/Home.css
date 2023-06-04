@@ -1,0 +1,12 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.slideshow-images-content {
+  width: 100%;
+}
+
+.slideshow-images-section {
+  border: 1px solid white;
+}
