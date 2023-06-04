@@ -1,6 +1,7 @@
 .home-page {
   display: flex;
   flex-direction: column;
+  gap: 5rem;
 }
 
 .slideshow-images-content {
@@ -9,4 +10,34 @@
 
 .slideshow-images-section {
   border: 1px solid white;
+}
+
+.collections-categories-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 412px) and (max-width: 415px) {
+    .home-page {
+      gap: 1rem;
+    }
+  }
+
+@media (min-width: 768px) {
+  .home-page {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 912px) {
+    .home-page {
+      gap: 0rem;
+    }
+  }
+
+@media (min-width: 1024px) {
+  .home-page {
+    gap: 10rem;
+  }
 }

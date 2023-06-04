@@ -6,7 +6,7 @@ const filterListBySearchValue = (list, searchValue) =>
       elm.categoryName.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-const filterListByCheckbox = (list, checkboxValues) =>
+const filterListByCategoryCheckbox = (list, checkboxValues) =>
   checkboxValues.length < 1
     ? list
     : list.filter((elm) =>
@@ -35,8 +35,8 @@ export const updateListWithAppliedFilters = (
     filteredProductsList,
     appliedFilterValues.searchValue
   );
-  // Apply checkbox filter
-  filteredProductsList = filterListByCheckbox(
+  // Apply categories checkbox filter
+  filteredProductsList = filterListByCategoryCheckbox(
     filteredProductsList,
     appliedFilterValues.checkboxValues
   );

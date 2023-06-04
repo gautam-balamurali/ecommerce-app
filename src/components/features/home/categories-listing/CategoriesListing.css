@@ -1,0 +1,28 @@
+.categories-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.categories-section h2 {
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.category-contents {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.category {
+  border: 1px solid;
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+}

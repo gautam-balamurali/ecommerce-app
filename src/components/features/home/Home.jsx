@@ -1,5 +1,6 @@
 import "./Home.css";
 import CategoriesListing from "./categories-listing/CategoriesListing";
+import CollectionsListing from "./collections-listing/CollectionsListing";
 import SlideshowImages from "./slideshow-images-component/SlideshowImages";
 
 const Home = () => {
@@ -16,8 +17,10 @@ const Home = () => {
           <SlideshowImages images={images} />
         </div>
       </div>
-      <h3>Filter by Categories</h3>
-      <CategoriesListing />
+      <div className="collections-categories-section">
+        <CollectionsListing />
+        <CategoriesListing />
+      </div>
     </div>
   );
 };
