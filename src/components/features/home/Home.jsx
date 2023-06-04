@@ -1,18 +1,24 @@
-import { Link } from "react-router-dom";
-
 import "./Home.css";
 import CategoriesListing from "./categories-listing/CategoriesListing";
+import SlideshowImages from "./slideshow-images-component/SlideshowImages";
 
 const Home = () => {
+  const images = [
+    "https://res.cloudinary.com/dbe8yf165/image/upload/v1685796157/cricify/ipl/csk-shop-banner_oudtqo.jpg",
+    "https://res.cloudinary.com/dbe8yf165/image/upload/v1685796159/cricify/ipl/kkr-shop-banner_ic2g3b.jpg",
+    "https://res.cloudinary.com/dbe8yf165/image/upload/v1685796160/cricify/ipl/punjab-shop-banner_egrquu.jpg",
+  ];
+
   return (
-    <>
-      <h2>Home Page</h2>
-      <Link to={"/products"}>
-        <button>Go to store</button>
-      </Link>
+    <div className="home-page">
+      <div className="slideshow-images-section">
+        <div className="slideshow-images-content">
+          <SlideshowImages images={images} />
+        </div>
+      </div>
       <h3>Filter by Categories</h3>
       <CategoriesListing />
-    </>
+    </div>
   );
 };
 
