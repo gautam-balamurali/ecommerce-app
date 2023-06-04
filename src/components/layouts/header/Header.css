@@ -12,6 +12,8 @@
   top: 0;
   /* overflow-x: hidden;
   overflow-y: hidden; */
+  position: sticky;
+  z-index: 2000;
 }
 
 .header-content:nth-child(2) {
