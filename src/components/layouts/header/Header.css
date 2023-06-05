@@ -4,7 +4,7 @@
   padding: 1rem;
   width: 100%;
   position: relative;
-  background-color: lightblue;
+  background-color: var(--primary-color);
   justify-content: space-between;
   align-items: center;
   left: 0;
@@ -14,6 +14,23 @@
   overflow-y: hidden; */
   position: sticky;
   z-index: 2000;
+}
+
+.header-img-container {
+  width: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-img {
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.app-title{
+  color: var(--secondary-color);
+  letter-spacing: 0.15em;
 }
 
 .header-content:nth-child(2) {
