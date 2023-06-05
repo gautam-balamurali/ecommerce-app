@@ -107,7 +107,7 @@ const Login = () => {
               type={showPassword ? "text" : "password"}
               name={"password"}
               value={loginCredentials.password}
-              placeholder={"*******"}
+              placeholder={"****************"}
               onChangeFunction={loginCredentialsChangeHandler}
               required={true}
             />

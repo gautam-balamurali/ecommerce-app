@@ -140,7 +140,7 @@ const SignUp = () => {
               type={showPassword ? "text" : "password"}
               name={"password"}
               value={signUpCredentials.password}
-              placeholder={"*******"}
+              placeholder={"****************"}
               onChangeFunction={signUpCredentialsChangeHandler}
               required={true}
             />
