@@ -15,7 +15,7 @@ const SlideshowImages = ({ images }) => {
     };
 
     transitionImages();
-    const interval = setInterval(transitionImages, 20000);
+    const interval = setInterval(transitionImages, 10000);
 
     return () => {
       clearInterval(interval);

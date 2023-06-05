@@ -10,7 +10,7 @@
 }
 
 .section {
-  min-height: calc(100vh - 9.475rem - 9.475rem);
+  min-height: calc(100vh - 4rem - 4rem);
 }
 
 .App-logo {
