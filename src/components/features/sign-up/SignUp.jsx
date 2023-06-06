@@ -19,6 +19,7 @@ const SignUp = () => {
     lastName: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -30,6 +31,7 @@ const SignUp = () => {
       Math.random() * 100
     )}@neog.camp`,
     password: "johnDoe",
+    confirmPassword: "johnDoe",
   };
 
   const signUpCredentialsChangeHandler = (event) => {
@@ -62,7 +64,9 @@ const SignUp = () => {
 
   const submitClickHandler = (event) => {
     event.preventDefault();
-    signUpHandler(signUpCredentials);
+    signUpCredentials.password === signUpCredentials.confirmPassword
+      ? signUpHandler(signUpCredentials)
+      : alert("Passwords don't match");
   };
 
   const toggleShowHidePassword = () => {
@@ -140,6 +144,26 @@ const SignUp = () => {
               type={showPassword ? "text" : "password"}
               name={"password"}
               value={signUpCredentials.password}
+              placeholder={"****************"}
+              onChangeFunction={signUpCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <div className="pswd-section">
+            <div
+              className="eye-icon"
+              aria-hidden="true"
+              onClick={toggleShowHidePassword}
+            >
+              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            </div>
+            <InputField
+              className={"pswd-txt-inpt"}
+              label={"Confirm Password"}
+              label_class={"pswd"}
+              type={showPassword ? "text" : "password"}
+              name={"confirmPassword"}
+              value={signUpCredentials.confirmPassword}
               placeholder={"****************"}
               onChangeFunction={signUpCredentialsChangeHandler}
               required={true}
