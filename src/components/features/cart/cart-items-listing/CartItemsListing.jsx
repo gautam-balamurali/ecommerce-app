@@ -45,7 +45,7 @@ const CartItemsListing = () => {
                     }`}
                     onClick={() =>
                       isWishlistContainsProduct(_id)
-                        ? removeProductFromWishlist(_id)
+                        ? removeProductFromWishlist(_id, title)
                         : addProductToWishlist(product)
                     }
                   >
@@ -114,7 +114,7 @@ const CartItemsListing = () => {
                     </div>
                     <button
                       className="cart-delete-btn"
-                      onClick={() => removeProductFromCart(_id)}
+                      onClick={() => removeProductFromCart(_id, title)}
                     >
                       <BsCartDashFill /> Remove
                     </button>
