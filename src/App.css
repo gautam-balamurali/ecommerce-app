@@ -11,9 +11,10 @@
   --medium-shade-color: #668799;
   --dark-shade-color: #1f4e69;
   --white-color: #ffffff;
+  --red-shade-600: #dc2626;
   --red-shade-700: #b91c1c;
-  --red-shade-800: #991b1b;
-  --orange-shade-700: #ea580c;
+  --orange-shade-600: #ea580c;
+  --green-shade-600: #16a34a;
 }
 
 .App {
