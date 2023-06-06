@@ -3,7 +3,11 @@ import { FaFilter } from "react-icons/fa";
 import "./Filters.css";
 import { useProducts } from "../../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../../shared/input-field-component/InputField";
-import { priceFieldFilters } from "../../../../config/AppConfig";
+import {
+  collections,
+  leagueTypeFieldFilters,
+  priceFieldFilters,
+} from "../../../../config/AppConfig";
 
 const Filters = ({ className }) => {
   const { categories, handleFilterChange, appliedFilterValues, clearFilters } =
@@ -45,17 +49,69 @@ const Filters = ({ className }) => {
             ))}
           </div>
           <div className="filter-category">
-            <h4>Category</h4>
+            <h4>Categories</h4>
             {categoriesFieldFilters.map((category, index) => (
               <div key={index} className={"selectable-input-filter"}>
                 <InputField
                   type={"checkbox"}
                   value={category}
                   label={category}
-                  name={"checkboxValues"}
+                  name={"categoryCheckboxValues"}
                   onChangeFunction={handleFilterChange}
-                  checked={appliedFilterValues.checkboxValues.includes(
+                  checked={appliedFilterValues.categoryCheckboxValues.includes(
                     category
+                  )}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="filter-category">
+            <h4>Collections</h4>
+            {collections.map(({ collectionName }, index) => (
+              <div key={index} className={"selectable-input-filter"}>
+                <InputField
+                  type={"checkbox"}
+                  value={collectionName}
+                  label={collectionName}
+                  name={"booleanCheckboxValues"}
+                  onChangeFunction={handleFilterChange}
+                  checked={appliedFilterValues.booleanCheckboxValues.includes(
+                    collectionName
+                  )}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="filter-category">
+            <h4>Stock Availability</h4>
+            <div className={"selectable-input-filter"}>
+              <InputField
+                type={"checkbox"}
+                value={"inStock"}
+                label={"In Stock"}
+                name={"booleanCheckboxValues"}
+                onChangeFunction={handleFilterChange}
+                checked={appliedFilterValues.booleanCheckboxValues.includes(
+                  "inStock"
+                )}
+              />
+            </div>
+          </div>
+          <div className="filter-category">
+            <h4>League Type</h4>
+            {leagueTypeFieldFilters.map(({ label, value }, index) => (
+              <div
+                key={index}
+                className={"selectable-input-filter"}
+              >
+                <InputField
+                  type={"checkbox"}
+                  value={value}
+                  label={label}
+                  name={"booleanCheckboxValues"}
+                  onChangeFunction={handleFilterChange}
+                  checked={appliedFilterValues.booleanCheckboxValues.includes(
+                    value
                   )}
                 />
               </div>
@@ -75,12 +131,12 @@ const Filters = ({ className }) => {
                 />
               </div>
               <div className="slider-labels">
-                {[1, 2, 3, 4, 5].map((_, index) => (
+                {[1, 2, 3, 4].map((_, index) => (
                   <div key={index} className={"slider-input-filter"}>
                     <span className="rating-star">⭐</span>
                   </div>
                 ))}
-                <span>{"\u00A0and below"}</span>
+                <span>{"\u00A0and above"}</span>
               </div>
             </div>
           </div>
