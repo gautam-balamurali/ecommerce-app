@@ -35,8 +35,8 @@
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
   border-top: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   max-height: 200px;
@@ -50,7 +50,7 @@
 }
 
 .dropdown-item:hover {
-  background-color: #ccc;
+  background-color: var(--light-shade-color);
 }
 
 @media (min-width: 768px) {

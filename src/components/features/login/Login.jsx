@@ -117,7 +117,7 @@ const Login = () => {
           </button>
         </form>
         <button onClick={loginAsAGuestClickHandler} className="login-btn">
-          Generate Guest Credentials
+          Set Guest Credentials
         </button>
         <p className="form-info-last">
           Don't have an account?

@@ -15,7 +15,7 @@
 .nav-item {
   position: relative;
   display: inline-block;
-  color: #0f0f0f;
+  color: var(--secondary-color);
   cursor: pointer;
   pointer-events: auto;
 }
@@ -24,8 +24,8 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background-color: red;
-  color: white;
+  background-color: var(--dark-shade-color);
+  color: var(--secondary-color);
   border-radius: 50%;
   padding: 2px 6px;
   font-size: 0.6rem;
