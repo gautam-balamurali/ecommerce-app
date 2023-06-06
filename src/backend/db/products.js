@@ -583,7 +583,7 @@ export const products = [
     price: "1316",
     categoryName: "merchandise",
     size: "One Size - Free Size",
-    rating: 0.9,
+    rating: 1.6,
     images: [
       "https://res.cloudinary.com/dbe8yf165/image/upload/v1685796121/cricify/fan-merchandise/Black_Metal_Precision_Safety_Razor_-_Rajasthan_Royals-1316_hqsngk.jpg",
       "https://res.cloudinary.com/dbe8yf165/image/upload/v1685796121/cricify/fan-merchandise/Black_Metal_Precision_Safety_Razor_-_Rajasthan_Royals-1316_hqsngk.jpg",
