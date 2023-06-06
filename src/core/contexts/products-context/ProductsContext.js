@@ -9,7 +9,10 @@ import { updateListWithAppliedFilters } from "../../../utils/helper-functions/He
 export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const [state, productsDispatch] = useReducer(productsReducer, productsReducerInitialState);
+  const [state, productsDispatch] = useReducer(
+    productsReducer,
+    productsReducerInitialState
+  );
   const { token } = useAuthentication();
 
   useEffect(() => {
@@ -199,7 +202,22 @@ export const ProductsProvider = ({ children }) => {
   const filterByCategory = (categoryName) => {
     const newAppliedFilterValues = {
       searchValue: "",
-      checkboxValues: [categoryName],
+      categoryCheckboxValues: [categoryName],
+      booleanCheckboxValues: [],
+      radioButtonValue: "",
+      rangeValue: 5,
+    };
+    productsDispatch({
+      type: "APPLY_FILTERS",
+      payload: { ...newAppliedFilterValues },
+    });
+  };
+
+  const filterByCollection = (collectionName) => {
+    const newAppliedFilterValues = {
+      searchValue: "",
+      categoryCheckboxValues: [],
+      booleanCheckboxValues: [collectionName],
       radioButtonValue: "",
       rangeValue: 5,
     };
@@ -212,7 +230,8 @@ export const ProductsProvider = ({ children }) => {
   const clearFilters = () => {
     const newAppliedFilterValues = {
       searchValue: "",
-      checkboxValues: [],
+      categoryCheckboxValues: [],
+      booleanCheckboxValues: [],
       radioButtonValue: "",
       rangeValue: 5,
     };
@@ -265,6 +284,7 @@ export const ProductsProvider = ({ children }) => {
         handleFilterChange,
         filterByCategory,
         clearFilters,
+        filterByCollection,
       }}
     >
       {children}

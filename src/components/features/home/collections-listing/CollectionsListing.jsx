@@ -1,21 +1,17 @@
+import { useNavigate } from "react-router";
+
+import { collections } from "../../../../config/AppConfig";
+import { useProducts } from "../../../../core/contexts/products-context/ProductsContext";
 import "./CollectionsListing.css";
-import { v4 as uuid } from "uuid";
 
 const CollectionsListing = () => {
-  const collections = [
-    {
-      _id: uuid(),
-      collectionName: "men",
-      imageUrl:
-        "https://res.cloudinary.com/dbe8yf165/image/upload/v1685866682/cricify/team-bg1_cn2jeo.jpg",
-    },
-    {
-      _id: uuid(),
-      collectionName: "women",
-      imageUrl:
-        "https://res.cloudinary.com/dbe8yf165/image/upload/v1685796128/cricify/women%27s-international/team-bg2_vzglms.jpg",
-    },
-  ];
+  const { filterByCollection } = useProducts();
+  const navigate = useNavigate();
+  const collectionClickHandler = (collectionName) => {
+    filterByCollection(collectionName);
+    navigate("/products");
+  };
+
   return (
     <div className="collections-section">
       <h2>Collections</h2>
@@ -23,7 +19,7 @@ const CollectionsListing = () => {
         {collections.length > 0 &&
           collections.map(({ _id, collectionName, imageUrl }) => (
             <div
-              //   onClick={() => categoryClickHandler(collectionName)}
+              onClick={() => collectionClickHandler(collectionName)}
               key={_id}
               className="collection"
             >
