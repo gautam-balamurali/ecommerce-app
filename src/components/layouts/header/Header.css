@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-.app-title{
+.app-title {
   color: var(--secondary-color);
   letter-spacing: 0.15em;
 }
@@ -37,6 +37,15 @@
   order: 3;
   padding-top: 1rem;
   align-self: center;
+}
+
+@media (max-width: 300px) {
+  .header-img-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
