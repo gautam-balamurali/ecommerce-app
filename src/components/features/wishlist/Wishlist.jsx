@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
-import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
-import "./Wishlist.css";
 import { useNavigate } from "react-router";
 import { FaCartPlus, FaShoppingCart, FaStar } from "react-icons/fa";
 import { BsCartDashFill } from "react-icons/bs";
+import { toast } from "react-toastify";
+
+import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
+import "./Wishlist.css";
 
 const Wishlist = () => {
   // const {
@@ -77,6 +78,13 @@ const Wishlist = () => {
   const isCartContainsProduct = (productId) =>
     cart.find((product) => product._id === productId);
 
+  const handleCartUpdate = (productId, productTitle) => {
+    updateCartProduct(productId, "increment");
+    toast.success(`${productTitle}'s quantity increased in the cart.`, {
+      theme: "colored",
+    });
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % 3);
@@ -140,7 +148,7 @@ const Wishlist = () => {
                       className="wishlist-add-to-wishlist-btn"
                       onClick={() =>
                         isCartContainsProduct(_id)
-                          ? updateCartProduct(_id, "increment")
+                          ? handleCartUpdate(_id, title)
                           : addProductToCart(product)
                       }
                     >
@@ -148,12 +156,14 @@ const Wishlist = () => {
                         <FaCartPlus />
                       ) : (
                         <FaShoppingCart />
-                      )}{" "}
-                      Add to Cart
+                      )}
+                      {isCartContainsProduct(_id)
+                        ? "Add Another"
+                        : "Add to Cart"}
                     </button>
                     <button
                       className="wishlist-item-delete"
-                      onClick={() => removeProductFromWishlist(_id)}
+                      onClick={() => removeProductFromWishlist(_id, title)}
                     >
                       <BsCartDashFill /> Remove
                     </button>

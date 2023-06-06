@@ -4,7 +4,8 @@ import axios from "axios";
 import { productsReducer } from "../../reducers/products-reducer/ProductsReducerFunction";
 import { productsReducerInitialState } from "../../reducers/products-reducer/ProductsReducerInititalState";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
-import { updateListWithAppliedFilters } from "../../../utils/helper-functions/HelperFunctions";
+import { updateListWithAppliedFilters } from "../../../utils/helper-functions/helperFunctions";
+import { toast } from "react-toastify";
 
 export const ProductsContext = createContext();
 
@@ -70,26 +71,30 @@ export const ProductsProvider = ({ children }) => {
   }, [token]);
 
   const addProductToCart = async (product) => {
-    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         "/api/user/cart",
         { product },
         { headers: { authorization: token } }
       );
-      if (response.status === 200 || response.status === 201)
+      if (response.status === 200 || response.status === 201) {
         productsDispatch({
           type: "FETCH_CART_DATA",
           payload: response?.data?.cart,
         });
+        toast.success(`${product.title} added to the cart.`, {
+          theme: "colored",
+        });
+      }
     } catch (error) {
       console.error(error);
       productsDispatch({
         type: "FETCH_ERROR_DETAILS",
         payload: error?.response,
       });
-    } finally {
-      productsDispatch({ type: "LOADER_STOPPED" });
+      toast.error(`Failed to add ${product.title} to the cart.`, {
+        theme: "colored",
+      });
     }
   };
 
@@ -114,71 +119,83 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  const removeProductFromCart = async (productId) => {
-    productsDispatch({ type: "LOADER_INITIATED" });
+  const removeProductFromCart = async (productId, productName) => {
     try {
       const response = await axios.delete(`/api/user/cart/${productId}`, {
         headers: { authorization: token },
       });
-      if (response.status === 200 || response.status === 201)
+      if (response.status === 200 || response.status === 201) {
         productsDispatch({
           type: "FETCH_CART_DATA",
           payload: response?.data?.cart,
         });
+        toast.success(`${productName} removed from the cart.`, {
+          theme: "colored",
+        });
+      }
     } catch (error) {
       console.error(error);
       productsDispatch({
         type: "FETCH_ERROR_DETAILS",
         payload: error?.response,
       });
-    } finally {
-      productsDispatch({ type: "LOADER_STOPPED" });
+      toast.error(`Failed to remove ${productName} from the cart.`, {
+        theme: "colored",
+      });
     }
   };
 
   const addProductToWishlist = async (product) => {
-    productsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await axios.post(
         "/api/user/wishlist",
         { product },
         { headers: { authorization: token } }
       );
-      if (response.status === 200 || response.status === 201)
+      if (response.status === 200 || response.status === 201) {
         productsDispatch({
           type: "FETCH_WISHLIST_DATA",
           payload: response?.data?.wishlist,
         });
+        toast.success(`${product.title} added to the wishlist.`, {
+          theme: "colored",
+        });
+      }
     } catch (error) {
       console.error(error);
       productsDispatch({
         type: "FETCH_ERROR_DETAILS",
         payload: error?.response,
       });
-    } finally {
-      productsDispatch({ type: "LOADER_STOPPED" });
+      toast.error(`Failed to add ${product.title} to the wishlist.`, {
+        theme: "colored",
+      });
     }
   };
 
-  const removeProductFromWishlist = async (productId) => {
-    productsDispatch({ type: "LOADER_INITIATED" });
+  const removeProductFromWishlist = async (productId, productName) => {
     try {
       const response = await axios.delete(`/api/user/wishlist/${productId}`, {
         headers: { authorization: token },
       });
-      if (response.status === 200 || response.status === 201)
+      if (response.status === 200 || response.status === 201) {
         productsDispatch({
           type: "FETCH_WISHLIST_DATA",
           payload: response?.data?.wishlist,
         });
+        toast.success(`Removed ${productName} from the wishlist.`, {
+          theme: "colored",
+        });
+      }
     } catch (error) {
       console.error(error);
       productsDispatch({
         type: "FETCH_ERROR_DETAILS",
         payload: error?.response,
       });
-    } finally {
-      productsDispatch({ type: "LOADER_STOPPED" });
+      toast.error(`Failed to remove ${productName} from the wishlist.`, {
+        theme: "colored",
+      });
     }
   };
 
@@ -205,7 +222,7 @@ export const ProductsProvider = ({ children }) => {
       categoryCheckboxValues: [categoryName],
       booleanCheckboxValues: [],
       radioButtonValue: "",
-      rangeValue: 5,
+      rangeValue: 1,
     };
     productsDispatch({
       type: "APPLY_FILTERS",
@@ -219,7 +236,7 @@ export const ProductsProvider = ({ children }) => {
       categoryCheckboxValues: [],
       booleanCheckboxValues: [collectionName],
       radioButtonValue: "",
-      rangeValue: 5,
+      rangeValue: 1,
     };
     productsDispatch({
       type: "APPLY_FILTERS",
@@ -233,7 +250,7 @@ export const ProductsProvider = ({ children }) => {
       categoryCheckboxValues: [],
       booleanCheckboxValues: [],
       radioButtonValue: "",
-      rangeValue: 5,
+      rangeValue: 1,
     };
     productsDispatch({
       type: "CLEAR_FILTERS",
@@ -242,8 +259,9 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    productsDispatch({ type: "LOADER_INITIATED" });
     (async () => {
+      if (state.appliedFilterValues.searchValue.length < 1)
+        productsDispatch({ type: "LOADER_INITIATED" });
       try {
         const response = await axios.get("/api/products");
         const {

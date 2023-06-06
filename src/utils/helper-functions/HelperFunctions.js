@@ -2,7 +2,8 @@ const filterListBySearchValue = (list, searchValue) =>
   list.filter(
     (elm) =>
       elm.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-      elm.categoryName.toLowerCase().includes(searchValue.toLowerCase())
+      elm.categoryName.toLowerCase().includes(searchValue.toLowerCase()) ||
+      elm[searchValue.toLowerCase()]
   );
 
 const filterListByCategoryCheckbox = (list, categoryCheckboxValues) =>

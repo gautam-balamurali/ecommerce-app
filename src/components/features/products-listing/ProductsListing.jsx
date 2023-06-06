@@ -86,7 +86,7 @@ const ProductsListing = () => {
                     onClick={() =>
                       token
                         ? isWishlistContainsProduct(_id)
-                          ? removeProductFromWishlist(_id)
+                          ? removeProductFromWishlist(_id, title)
                           : addProductToWishlist(product)
                         : navigate("/login")
                     }

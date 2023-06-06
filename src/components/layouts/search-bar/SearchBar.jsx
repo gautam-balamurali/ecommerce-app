@@ -40,7 +40,7 @@ const SearchBar = () => {
         name={"searchValue"}
         value={appliedFilterValues.searchValue}
         onChangeFunction={handleFilterChange}
-        placeholder={"Search for Product"}
+        placeholder={"Search by name or category or collection"}
         className={"input-field"}
       />
       {showDropdown && (

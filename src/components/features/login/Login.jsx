@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,21 +39,21 @@ const Login = () => {
 
   const loginHandler = async (loginCredentials) => {
     productsDispatch({ type: "LOADER_INITIATED" });
-    try {
-      const userDetails = await logInUser(loginCredentials);
+    const userDetails = await logInUser(loginCredentials);
+    if (userDetails) {
       productsDispatch({
         type: "UPDATE_CART_AND_WISHLIST",
         payload: userDetails,
       });
-    } catch (error) {
-      console.error(error);
-      productsDispatch({
-        type: "FETCH_ERROR_DETAILS",
-        payload: error?.response,
+      toast.success(`Welcome back, ${userDetails?.firstName}!`, {
+        theme: "light",
       });
-    } finally {
-      productsDispatch({ type: "LOADER_STOPPED" });
+    } else {
+      toast.error("Login failed! Please try again with correct credentials.", {
+        theme: "colored",
+      });
     }
+    productsDispatch({ type: "LOADER_STOPPED" });
   };
 
   const submitClickHandler = (event) => {
