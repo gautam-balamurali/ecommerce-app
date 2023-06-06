@@ -46,14 +46,13 @@ const SearchBar = () => {
       {showDropdown && (
         <div className="dropdown">
           {products.length > 0 &&
-            products.map(({ _id, title, author }, index) => (
+            products.map(({ _id, title }) => (
               <div
-                key={index}
+                key={_id}
                 className="dropdown-item"
                 onClick={() => handleDropdownItemClick(_id)}
               >
-                <h3>{title}</h3>
-                <p>author: {author}</p>
+                <p>🔎 {title}</p>
               </div>
             ))}
           {appliedFilterValues.searchValue !== "" && products.length < 1 && (
