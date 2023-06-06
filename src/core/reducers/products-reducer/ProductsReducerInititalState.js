@@ -7,8 +7,9 @@ export const productsReducerInitialState = {
   errorDetails: null,
   appliedFilterValues: {
     searchValue: "",
-    checkboxValues: [],
+    categoryCheckboxValues: [],
+    booleanCheckboxValues: [],
     radioButtonValue: "",
-    rangeValue: 5,
+    rangeValue: 1,
   },
 };

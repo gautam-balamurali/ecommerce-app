@@ -107,7 +107,7 @@ const Login = () => {
               type={showPassword ? "text" : "password"}
               name={"password"}
               value={loginCredentials.password}
-              placeholder={"*******"}
+              placeholder={"****************"}
               onChangeFunction={loginCredentialsChangeHandler}
               required={true}
             />
@@ -117,7 +117,7 @@ const Login = () => {
           </button>
         </form>
         <button onClick={loginAsAGuestClickHandler} className="login-btn">
-          Generate Guest Credentials
+          Set Guest Credentials
         </button>
         <p className="form-info-last">
           Don't have an account?

@@ -2,17 +2,23 @@ const filterListBySearchValue = (list, searchValue) =>
   list.filter(
     (elm) =>
       elm.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-      elm.author.toLowerCase().includes(searchValue.toLowerCase()) ||
       elm.categoryName.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-const filterListByCheckbox = (list, checkboxValues) =>
-  checkboxValues.length < 1
+const filterListByCategoryCheckbox = (list, categoryCheckboxValues) =>
+  categoryCheckboxValues.length < 1
     ? list
     : list.filter((elm) =>
-        checkboxValues.some(
+        categoryCheckboxValues.some(
           (checkboxValue) => checkboxValue === elm.categoryName
         )
+      );
+
+const filterListByBooleanCheckbox = (list, booleanCheckboxValues) =>
+  booleanCheckboxValues.length < 1
+    ? list
+    : list.filter((elm) =>
+        booleanCheckboxValues.some((checkboxValue) => elm[checkboxValue])
       );
 
 const sortListByOrder = (list, order) =>
@@ -23,7 +29,7 @@ const sortListByOrder = (list, order) =>
       );
 
 const sortByRange = (list, rangeValue) =>
-  list.filter((elm) => elm.rating <= Number(rangeValue));
+  list.filter((elm) => elm.rating >= Number(rangeValue));
 
 export const updateListWithAppliedFilters = (
   productsList,
@@ -35,10 +41,15 @@ export const updateListWithAppliedFilters = (
     filteredProductsList,
     appliedFilterValues.searchValue
   );
-  // Apply checkbox filter
-  filteredProductsList = filterListByCheckbox(
+  // Apply categories checkbox filter
+  filteredProductsList = filterListByCategoryCheckbox(
     filteredProductsList,
-    appliedFilterValues.checkboxValues
+    appliedFilterValues.categoryCheckboxValues
+  );
+  // Apply boolean checkbox filter
+  filteredProductsList = filterListByBooleanCheckbox(
+    filteredProductsList,
+    appliedFilterValues.booleanCheckboxValues
   );
   // Apply radio filter
   filteredProductsList = sortListByOrder(

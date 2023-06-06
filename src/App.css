@@ -4,13 +4,26 @@
   margin: 0;
 }
 
+:root {
+  --primary-color: #50abf5;
+  --secondary-color: #f6f9fb;
+  --light-shade-color: #aec0ca;
+  --medium-shade-color: #668799;
+  --dark-shade-color: #1f4e69;
+  --white-color: #ffffff;
+  --red-shade-600: #dc2626;
+  --red-shade-700: #b91c1c;
+  --orange-shade-600: #ea580c;
+  --green-shade-600: #16a34a;
+}
+
 .App {
   max-width: 100vw;
   /* min-height: 100vh; */
 }
 
 .section {
-  min-height: calc(100vh - 9.475rem - 9.475rem);
+  min-height: calc(100vh - 4rem - 4rem);
 }
 
 .App-logo {
