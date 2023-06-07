@@ -36,7 +36,7 @@ const Footer = () => {
                 <a
                   className="link"
                   target="_blank"
-                  href="https://github.com/gautam-balamurali"
+                  href="https://cricify-gautam-balamurali.netlify.app/products"
                   rel="noopener noreferrer"
                 >
                   <p>Products</p>
@@ -44,7 +44,7 @@ const Footer = () => {
                 <a
                   className="link"
                   target="_blank"
-                  href="https://github.com/gautam-balamurali"
+                  href="https://github.com/gautam-balamurali/ecommerce-app"
                   rel="noopener noreferrer"
                 >
                   <p>About Us</p>
@@ -54,7 +54,7 @@ const Footer = () => {
                 <a
                   className="link"
                   target="_blank"
-                  href="https://github.com/gautam-balamurali"
+                  href="https://gautam-balamurali.hashnode.dev/"
                   rel="noopener noreferrer"
                 >
                   <p>Articles</p>
@@ -62,7 +62,7 @@ const Footer = () => {
                 <a
                   className="link"
                   target="_blank"
-                  href="https://github.com/gautam-balamurali"
+                  href="https://github.com/gautam-balamurali/ecommerce-app/blob/master/README.md"
                   rel="noopener noreferrer"
                 >
                   <p>Documentation</p>
