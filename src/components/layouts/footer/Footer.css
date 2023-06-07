@@ -1,14 +1,12 @@
 .footer {
   width: 100%;
   position: relative;
-  background-color: lightblue;
+  background-color: var(--primary-color);
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 999;
   text-align: center;
-  /* overflow-x: hidden;
-  overflow-y: hidden; */
 }
 
 .footer a {
@@ -36,8 +34,8 @@
 }
 
 .social-media-icons {
-  color: lightblue;
-  background-color: blue;
+  color: var(--secondary-color);
+  background-color: var(--dark-shade-color);
   width: 100%;
   left: 0;
   right: 0;
@@ -57,6 +55,11 @@
 .copyrt-txt,
 .developer-txt {
   padding: 5px;
+}
+
+.heart{
+  color: var(--red-shade-700);
+  font-size: 1rem;
 }
 
 @media (max-width: 280px) {
@@ -86,18 +89,24 @@
   .website-info {
     text-align: start;
     padding-top: 0;
-    width: 25%;
+    width: 39%;
   }
 }
 
 @media (min-width: 1024px) {
   .website-info {
-    width: 20%;
+    width: 30%;
   }
 }
 
 @media (min-width: 1280px) {
   .website-info {
-    width: 15%;
+    width: 25%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .website-info {
+    width: 20%;
   }
 }

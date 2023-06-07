@@ -29,8 +29,9 @@
 }
 
 .app-title {
-  color: var(--secondary-color);
+  color: var(--dark-shade-color);
   letter-spacing: 0.15em;
+  font-weight: 700;
 }
 
 .header-content:nth-child(2) {

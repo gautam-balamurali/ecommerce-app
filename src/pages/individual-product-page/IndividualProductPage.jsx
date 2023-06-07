@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import ProductCard from "../../components/features/individual-product/ProductCard";
+import ProductDetails from "../../components/features/product-details/ProductDetails";
 import { useProducts } from "../../core/contexts/products-context/ProductsContext";
 
 const IndividualProductPage = () => {
@@ -31,7 +31,7 @@ const IndividualProductPage = () => {
       }
     })();
   }, [productId, productsDispatch]);
-  return <ProductCard product={productDetails} />;
+  return <ProductDetails product={productDetails} />;
 };
 
 export default IndividualProductPage;

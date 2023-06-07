@@ -119,7 +119,11 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  const removeProductFromCart = async (productId, productName) => {
+  const removeProductFromCart = async (
+    productId,
+    productName,
+    showToaster = true
+  ) => {
     try {
       const response = await axios.delete(`/api/user/cart/${productId}`, {
         headers: { authorization: token },
@@ -129,9 +133,11 @@ export const ProductsProvider = ({ children }) => {
           type: "FETCH_CART_DATA",
           payload: response?.data?.cart,
         });
-        toast.success(`${productName} removed from the cart.`, {
-          theme: "colored",
-        });
+        if (showToaster) {
+          toast.success(`${productName} removed from the cart.`, {
+            theme: "colored",
+          });
+        }
       }
     } catch (error) {
       console.error(error);

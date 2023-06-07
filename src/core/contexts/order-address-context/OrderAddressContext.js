@@ -30,19 +30,50 @@ export const OrderAddressProvider = ({ children }) => {
         ? { ...address, ...updatedAddress }
         : address
     );
+    if (state.selectedAddress._id === updatedAddress._id) {
+      orderAddressDispatch({
+        type: "CHANGE_DEFAULT_ADDRESS",
+        payload: updatedAddress,
+      });
+    }
     orderAddressDispatch({
       type: "UPDATE_ADDRESS_DETAILS",
       payload: newAddressHistory,
     });
   };
 
-  const deleteAddress = (addressId) => {
+  const deleteAddress = (addressID) => {
     const newAddressHistory = state.addressHistory.filter(
-      (address) => address._id !== addressId
+      (address) => address._id !== addressID
     );
     orderAddressDispatch({
       type: "UPDATE_ADDRESS_DETAILS",
       payload: newAddressHistory,
+    });
+  };
+
+  const setCurrentOrderDetails = (orderDetails) => {
+    orderAddressDispatch({
+      type: "SET_CURRENT_ORDER_DETAILS",
+      payload: orderDetails,
+    });
+  };
+
+  const changeDefaultAddress = (event) => {
+    const { value } = event.target;
+    const currentAddress = state.addressHistory.find(
+      (address) => address._id === value
+    );
+    orderAddressDispatch({
+      type: "CHANGE_DEFAULT_ADDRESS",
+      payload: currentAddress,
+    });
+  };
+
+  const addOrderDetails = (orderDetails) => {
+    orderAddressDispatch({
+      type: "ADD_NEW_ORDER_DETAILS",
+      payload: orderDetails,
     });
   };
 
@@ -54,6 +85,9 @@ export const OrderAddressProvider = ({ children }) => {
         addNewAddress,
         updateAddressHistory,
         deleteAddress,
+        setCurrentOrderDetails,
+        changeDefaultAddress,
+        addOrderDetails,
       }}
     >
       {children}

@@ -16,8 +16,29 @@
   border-radius: 5px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .modal-content {
   margin: 1rem;
+}
+
+.modal-close-btn {
+  position: absolute;
+  display: inline-block;
+  top: 1%;
+  right: 1%;
+  background: transparent;
+  border-radius: 50%;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .modal-close-btn:hover {
+    transform: scale(1.1);
+  }
 }

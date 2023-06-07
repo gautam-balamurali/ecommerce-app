@@ -1,0 +1,112 @@
+.cart-items-summary {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem 4rem 1rem;
+}
+
+.cart-items-summary-container {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.cart-items-summary-container h3 {
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 0.2em;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.coupon-container {
+  display: none;
+  padding-bottom: 1rem;
+}
+
+.coupon-apply-btn {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--dark-shade-color);
+  border: 1px solid var(--dark-shade-color);
+  background-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+}
+
+.apply-coupon-icon {
+  padding-right: 0.5rem;
+  font-size: 0.2rem;
+}
+
+.price-details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.price-detail span:first-child {
+  font-weight: 600;
+  color: var(--dark-shade-color);
+}
+
+.delivery-charges {
+  font-weight: 600;
+}
+
+.delivery-charges::before {
+  content: "₹70";
+  text-decoration: line-through;
+  padding-right: 0.5rem;
+  color: var(--dark-shade-color);
+  opacity: 0.4;
+}
+
+.total-amount {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--dark-shade-color);
+}
+
+.checkout-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--dark-shade-color);
+  background-color: var(--dark-shade-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+.checkout-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-shade-color);
+}
+
+@media (min-width: 768px) {
+  .cart-items-summary {
+    width: 40%;
+  }
+}

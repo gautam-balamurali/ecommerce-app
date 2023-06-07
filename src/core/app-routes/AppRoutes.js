@@ -12,6 +12,8 @@ import CartPage from "../../pages/cart-page/CartPage";
 import WishlistPage from "../../pages/wishlist-page/WishlistPage";
 import UserProfilePage from "../../pages/user-profile-page/UserProfilePage";
 import { AuthGuard } from "../auth-guard/AuthGuard";
+import CheckoutPage from "../../pages/checkout-page/CheckoutPage";
+import OrderHistoryPage from "../../pages/order-history-page/OrderHistoryPage";
 
 const AppRoutes = () => {
   return (
@@ -48,6 +50,22 @@ const AppRoutes = () => {
         element={
           <AuthGuard>
             <UserProfilePage />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path="/checkout"
+        element={
+          <AuthGuard>
+            <CheckoutPage />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path="/order-history"
+        element={
+          <AuthGuard>
+            <OrderHistoryPage />
           </AuthGuard>
         }
       />

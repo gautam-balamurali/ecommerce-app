@@ -21,7 +21,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -68,7 +68,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -190,7 +190,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -265,7 +265,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -315,7 +315,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -368,7 +368,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: false,
@@ -421,7 +421,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: false,
@@ -468,7 +468,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -566,7 +566,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -613,7 +613,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: false,
@@ -681,7 +681,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -707,7 +707,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -781,7 +781,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -836,7 +836,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -890,7 +890,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -943,7 +943,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: false,
@@ -996,7 +996,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1047,7 +1047,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1102,7 +1102,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1155,7 +1155,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1208,7 +1208,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1261,7 +1261,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1314,7 +1314,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
@@ -1367,7 +1367,7 @@ export const products = [
     description: [
       "Fit Type: Regular Fit",
       "Very comforting",
-      "100 % polyester",
+      "100% polyester",
       "Wash:- Gentle Hand Wash, Do Not Bleach, Dry in Shade",
     ],
     inStock: true,
