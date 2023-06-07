@@ -1,6 +1,6 @@
 <div align="center">
     <h1>
-![cricify logo](https://res.cloudinary.com/dbe8yf165/image/upload/v1686143908/cricify/fan-merchandise/cricify-logo-2_nuw9bc.png)cricify</h1>
+![image](https://github.com/gautam-balamurali/ecommerce-app/assets/27736288/7f9effd5-949f-4321-9dc4-095ed4812327)</h1>
      <h3 >
       🏏🎽 Your All-Star Destination for Cricket Fashion and Gear! 🎽🏏
     </h3>
