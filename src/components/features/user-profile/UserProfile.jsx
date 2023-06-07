@@ -23,7 +23,11 @@ const UserProfile = () => {
     navigate("/");
   };
 
-  const userProfileCategories = ["About", "Addresses"];
+  const viewOrdersClickHandler = () => {
+    navigate("/order-history");
+  };
+
+  const userProfileCategories = ["About", "Addresses", "Order History"];
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [isEditFormEnabled, setEditFormEnabled] = useState(false);
@@ -132,6 +136,9 @@ const UserProfile = () => {
                 <p className="about-label">Email Address</p>
                 <p className="about-value">{email}</p>
               </div>
+              {/* <button className="order-history-btn" onClick={viewOrdersClickHandler}>
+                View Order History
+              </button> */}
               <button className="logout-btn" onClick={logOutClickHandler}>
                 Log Out
               </button>
@@ -198,7 +205,7 @@ const UserProfile = () => {
                       </label>
                     );
                   })}
-                <CustomModal isOpen={isModalOpen}>
+                <CustomModal isOpen={isModalOpen} onClose={handleCloseModal}>
                   <form
                     className="address-form"
                     onSubmit={submitClickHandler}
@@ -315,12 +322,6 @@ const UserProfile = () => {
                       </div>
                     </div>
                     <div className="form-action-btns">
-                      <button
-                        className="form-btn-close"
-                        onClick={handleCloseModal}
-                      >
-                        Close
-                      </button>
                       <button type="submit" className="form-btn-submit">
                         Submit
                       </button>
@@ -332,6 +333,14 @@ const UserProfile = () => {
                 + Add New Address
               </button>
             </div>
+          )}
+          {isCategorySelected === "Order History" && (
+            <button
+              className="order-history-btn"
+              onClick={viewOrdersClickHandler}
+            >
+              View Order History
+            </button>
           )}
         </div>
       </div>

@@ -1,0 +1,151 @@
+.addresses-checkout {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.addresses-checkout-content {
+  max-height: 12rem;
+  padding-bottom: 1rem;
+  overflow-y: auto;
+}
+
+.address-checkout-wrapper {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 2px;
+}
+
+.address-checkout {
+  word-spacing: 1px;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  border: 1px dotted var(--primary-color);
+  border-width: 1px 0;
+  padding: 5px 5px 0 5px;
+}
+
+.address-checkout-configuration-btns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.add-new-address-checkout-btn {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 0.3rem;
+  color: var(--white-color);
+  cursor: pointer;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.add-new-address-checkout-btn:hover {
+  border: 1px solid var(--primary-color);
+  background-color: var(--white-color);
+  color: var(--primary-color);
+}
+
+.address-checkout-action-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.5rem;
+}
+
+.address-checkout-form {
+  text-align: center;
+}
+
+.address-checkout-form h2 {
+  padding-bottom: 1rem;
+}
+
+.name-section label,
+.mobile-section label,
+.street-section label,
+.city-section label,
+.zipcode-section label,
+.state-section label,
+.country-section label {
+  color: #555;
+  display: block;
+  font-weight: 700;
+  padding-bottom: 5px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  padding-left: 0.4rem;
+}
+
+.name-section input,
+.mobile-section input,
+.street-section input,
+.city-section input,
+.zipcode-section input,
+.state-section input,
+.country-section input {
+  border: 1px solid vaar(--light-shade-color);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+  word-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.name-section,
+.mobile-section,
+.street-section,
+.city-section,
+.zipcode-section,
+.state-section,
+.country-section {
+  text-align: start;
+}
+
+.name-mobile-section,
+.city-zipcode-section,
+.state-country-section {
+  display: flex;
+}
+
+.form-action-btns {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+}
+
+.form-btn-close {
+  border-radius: 5px;
+  padding: 8px 16px;
+  border: none;
+  background-color: vaar(--light-shade-color);
+  cursor: pointer;
+}
+
+.form-btn-submit {
+  border-radius: 5px;
+  padding: 8px 16px;
+  border: none;
+  background-color: var(--primary-color);
+  color: vaar(--light-shade-color);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .addresses-checkout-content {
+    max-height: 25rem;
+    height: auto;
+  }
+}

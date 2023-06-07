@@ -1,20 +1,20 @@
 .greetings {
   /* padding-left: 5px; */
   padding-top: 5px;
-  /* max-width: 18rem; */
-  /* white-space: nowrap;
+  max-width: 18rem;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; */
+  text-overflow: ellipsis;
   padding-bottom: 5px;
   text-align: center;
 }
 
 .user-name {
-  color: blue;
+  color: var(--primary-color);
 }
 
 .separator {
-  border: 1px solid #ccc;
+  border: 1px solid var(--light-shade-color);
 }
 
 .profile-categories-list {
@@ -41,11 +41,15 @@
 
 .category-name {
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .category-name-active {
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid var(--primary-color);
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .category-content {
@@ -65,14 +69,14 @@
 
 .user-dp {
   border-radius: 50%;
-  border: 2px solid #01967b;
+  border: 2px solid var(--light-shade-color);
   background: #e7faf3;
   height: 5rem;
   width: 5rem;
 }
 
 .about-label {
-  color: #555;
+  color: var(--dark-shade-color);
   display: block;
   font-weight: 700;
   padding-bottom: 2px;
@@ -89,10 +93,10 @@
 }
 
 .logout-btn {
-  background-color: #b91c1c;
-  border: 1px solid #b91c1c;
+  background-color: var(--red-shade-700);
+  border: 1px solid var(--red-shade-700);
   border-radius: 0.3rem;
-  color: #fff;
+  color: var(--white-color);
   cursor: pointer;
   display: block;
   font-size: 0.95rem;
@@ -102,9 +106,28 @@
 }
 
 .logout-btn:hover {
-  border: 1px solid #b91c1c;
-  background-color: #fff;
-  color: #b91c1c;
+  border: 1px solid var(--red-shade-700);
+  background-color: var(--white-color);
+  color: var(--red-shade-700);
+}
+
+.order-history-btn {
+  background-color: var(--green-shade-600);
+  border: 1px solid var(--green-shade-600);
+  border-radius: 0.3rem;
+  color: var(--white-color);
+  cursor: pointer;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.order-history-btn:hover {
+  border: 1px solid var(--green-shade-600);
+  background-color: var(--white-color);
+  color: var(--green-shade-600);
 }
 
 /* .addresses {
@@ -128,7 +151,7 @@
   word-spacing: 1px;
   letter-spacing: 1px;
   line-height: 1rem;
-  border: 1px dotted #2874f0;
+  border: 1px dotted var(--primary-color);
   border-width: 1px 0;
   padding: 5px 5px 0 5px;
 }
@@ -140,10 +163,10 @@
 }
 
 .add-new-address-btn {
-  background-color: #2874f0;
-  border: 1px solid #2874f0;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 0.3rem;
-  color: #fff;
+  color: var(--white-color);
   cursor: pointer;
   display: block;
   font-size: 0.95rem;
@@ -154,7 +177,7 @@
 
 .add-new-address-btn:hover {
   border: 1px solid #2874f0;
-  background-color: #fff;
+  background-color: var(--white-color);
   color: #2874f0;
 }
 
@@ -183,7 +206,7 @@
 .zipcode-section label,
 .state-section label,
 .country-section label {
-  color: #555;
+  color: var(--dark-shade-color);
   display: block;
   font-weight: 700;
   padding-bottom: 5px;
@@ -200,7 +223,7 @@
 .zipcode-section input,
 .state-section input,
 .country-section input {
-  border: 1px solid #ccc;
+  border: 1px solid var(--light-shade-color);
   border-radius: 5px;
   box-sizing: border-box;
   padding: 0.5rem;
@@ -235,7 +258,7 @@
   border-radius: 5px;
   padding: 8px 16px;
   border: none;
-  background-color: #ccc;
+  background-color: var(--light-shade-color);
   cursor: pointer;
 }
 
@@ -243,9 +266,15 @@
   border-radius: 5px;
   padding: 8px 16px;
   border: none;
-  background-color: #000000;
-  color: #ccc;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   cursor: pointer;
+}
+
+.address-form-heading {
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 0.2em;
 }
 
 @media (max-width: 300px) {

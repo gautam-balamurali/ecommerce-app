@@ -122,7 +122,6 @@ const CartItemsListing = () => {
                 </div>
               );
             })}
-          {cart?.length < 1 && <h3>No products found in the cart.</h3>}
         </div>
       </div>
     </div>
