@@ -89,9 +89,9 @@ const Filters = ({ className }) => {
                 type={"checkbox"}
                 value={"inStock"}
                 label={"In Stock"}
-                name={"booleanCheckboxValues"}
+                name={"inStockCheckboxValue"}
                 onChangeFunction={handleFilterChange}
-                checked={appliedFilterValues.booleanCheckboxValues.includes(
+                checked={appliedFilterValues.inStockCheckboxValue.includes(
                   "inStock"
                 )}
               />

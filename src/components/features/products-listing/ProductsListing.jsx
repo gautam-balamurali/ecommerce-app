@@ -28,6 +28,7 @@ const ProductsListing = () => {
     addProductToCart,
     addProductToWishlist,
     removeProductFromWishlist,
+    isLoading,
   } = useProducts();
 
   const isCartContainsProduct = (productId) =>
@@ -115,6 +116,7 @@ const ProductsListing = () => {
                         }`}
                         src={imageUrl}
                         alt={title}
+                        onClick={() => navigate(`/product/${_id}`)}
                       />
                     ))}
                   </div>
@@ -178,7 +180,23 @@ const ProductsListing = () => {
                 </div>
               );
             })}
-          {products?.length < 1 && <h3>No products found.</h3>}
+          {products?.length < 1 && !isLoading && (
+            <div className="not-found">
+              <h3>No products found.</h3>
+              <img
+                className="list-loading-image"
+                src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686330912/cricify/undraw_page_not_found_re_e9o6_myjkmb.svg"
+                alt="not found"
+              />
+            </div>
+          )}
+          {isLoading && products?.length < 1 && (
+            <img
+              className="list-loading-image"
+              src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686330457/cricify/undraw_task_list_6x9d_bzj2aa.svg"
+              alt="loading list"
+            />
+          )}
         </div>
       </div>
     </div>

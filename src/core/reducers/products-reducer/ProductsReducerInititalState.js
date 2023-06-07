@@ -9,6 +9,7 @@ export const productsReducerInitialState = {
     searchValue: "",
     categoryCheckboxValues: [],
     booleanCheckboxValues: [],
+    inStockCheckboxValue: [],
     radioButtonValue: "",
     rangeValue: 1,
   },

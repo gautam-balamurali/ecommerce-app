@@ -18,7 +18,16 @@ const Checkout = () => {
         )}
         <OrderDetailsListing />
       </div>
-      {!currentOrderDetails && <h3>Add some products to cart to checkout.</h3>}
+      {!currentOrderDetails && (
+        <div className="not-found">
+          <h3>Add some products to the cart to checkout.</h3>
+          <img
+            className="list-loading-image"
+            src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686333933/cricify/undraw_add_to_cart_re_wrdo_xcogpy.svg"
+            alt="checkout"
+          />
+        </div>
+      )}
     </div>
   );
 };

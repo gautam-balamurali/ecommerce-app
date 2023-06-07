@@ -4,8 +4,8 @@ import axios from "axios";
 import { productsReducer } from "../../reducers/products-reducer/ProductsReducerFunction";
 import { productsReducerInitialState } from "../../reducers/products-reducer/ProductsReducerInititalState";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
-import { updateListWithAppliedFilters } from "../../../utils/helper-functions/helperFunctions";
 import { toast } from "react-toastify";
+import { updateListWithAppliedFilters } from "../../../utils/helper-functions/filterFunctions";
 
 export const ProductsContext = createContext();
 
@@ -227,6 +227,7 @@ export const ProductsProvider = ({ children }) => {
       searchValue: "",
       categoryCheckboxValues: [categoryName],
       booleanCheckboxValues: [],
+      inStockCheckboxValue:[],
       radioButtonValue: "",
       rangeValue: 1,
     };
@@ -241,6 +242,7 @@ export const ProductsProvider = ({ children }) => {
       searchValue: "",
       categoryCheckboxValues: [],
       booleanCheckboxValues: [collectionName],
+      inStockCheckboxValue:[],
       radioButtonValue: "",
       rangeValue: 1,
     };
@@ -255,6 +257,7 @@ export const ProductsProvider = ({ children }) => {
       searchValue: "",
       categoryCheckboxValues: [],
       booleanCheckboxValues: [],
+      inStockCheckboxValue:[],
       radioButtonValue: "",
       rangeValue: 1,
     };

@@ -182,7 +182,8 @@
 
 @media (min-width: 768px) {
   .cart-listing-section {
-    width: 50%;
+    width: auto;
+    max-width: 40rem;
     padding: 1rem;
   }
 

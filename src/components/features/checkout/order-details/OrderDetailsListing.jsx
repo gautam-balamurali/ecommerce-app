@@ -113,7 +113,7 @@ const OrderDetailsListing = () => {
               {isCouponApplied && (
                 <div className="order-price-detail">
                   <p>Applied Coupon:</p>
-                  <p>₹{coupon}</p>
+                  <p>{`FLAT${coupon * 100}%`}</p>
                 </div>
               )}
 

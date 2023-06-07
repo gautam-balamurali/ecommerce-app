@@ -19,10 +19,10 @@ const Cart = () => {
         </div>
       )}
       {cart?.length < 1 && (
-        <div>
+        <div className="not-found">
           <h3>No products found in the cart</h3>
           <img
-            className="not-found-img"
+            className="list-loading-image"
             src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686160027/cricify/misc/undraw_empty_cart_co35_atl4xc.svg"
             alt="cart plus"
           />

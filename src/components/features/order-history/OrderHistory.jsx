@@ -57,7 +57,7 @@ const OrderHistory = () => {
                   {isCouponApplied && (
                     <div className="order-price-detail">
                       <p>Applied Coupon:</p>
-                      <p>₹{coupon}</p>
+                      <p>{`FLAT${coupon * 100}%`}</p>
                     </div>
                   )}
 
@@ -100,12 +100,12 @@ const OrderHistory = () => {
           )
         )}
       {orderHistory?.length < 1 && (
-        <div>
+        <div className="not-found">
           <h4>
             Your order list is empty. Visit our store and do some shopping.✌🏼
           </h4>
           <img
-            className="not-found-img"
+            className="list-loading-image"
             src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686160437/cricify/misc/undraw_payments_re_77x0_yc32k0.svg"
             alt="order plus"
           />

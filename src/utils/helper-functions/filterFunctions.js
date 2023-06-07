@@ -52,6 +52,11 @@ export const updateListWithAppliedFilters = (
     filteredProductsList,
     appliedFilterValues.booleanCheckboxValues
   );
+  // Apply in stock checkbox filter
+  filteredProductsList = filterListByBooleanCheckbox(
+    filteredProductsList,
+    appliedFilterValues.inStockCheckboxValue
+  );
   // Apply radio filter
   filteredProductsList = sortListByOrder(
     filteredProductsList,

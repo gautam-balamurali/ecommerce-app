@@ -239,7 +239,14 @@ const ProductDetails = ({ product }) => {
         </div>
       )}
       {!isLoading && !errorDetails && !product && (
-        <h3>Product details not found.</h3>
+        <div className="not-found">
+          <h3>Product details not found.</h3>
+          <img
+            className="list-loading-image"
+            src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686330912/cricify/undraw_page_not_found_re_e9o6_myjkmb.svg"
+            alt="not found"
+          />
+        </div>
       )}
       <button
         className="back-to-store-btn"

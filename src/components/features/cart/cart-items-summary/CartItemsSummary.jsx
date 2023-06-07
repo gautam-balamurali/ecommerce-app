@@ -81,7 +81,7 @@ const CartItemsSummary = () => {
           {isCouponApplied && (
             <div className="price-detail">
               <p>Applied Coupon:</p>
-              <p>₹{coupon}</p>
+              <p>{`FLAT${coupon * 100}%`}</p>
             </div>
           )}
 

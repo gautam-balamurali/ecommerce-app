@@ -53,6 +53,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-bottom: 1rem;
 }
 
 .price-detail {
@@ -95,7 +96,6 @@
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s ease;
-  padding-top: 1rem;
   font-weight: bold;
   border-radius: 0.5rem;
 }
@@ -111,31 +111,30 @@
   text-decoration: underline;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   text-align: center;
 }
 
 .radio-type-container {
-  padding-top: 1rem;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .radio-type-container p {
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: left;
 }
 
 .radio-type {
   box-shadow: 0px 2px 4px var(--dark-shade-color);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .radio-type label {
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   display: flex;
   gap: 1rem;
 }
@@ -145,7 +144,7 @@
 }
 
 .coupon-action {
-  padding-top: 1.25rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
 }
@@ -167,6 +166,7 @@
 
 @media (min-width: 768px) {
   .cart-items-summary {
-    width: 40%;
+    width: auto;
+    min-width: 21.5rem;
   }
 }

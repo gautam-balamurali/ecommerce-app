@@ -116,23 +116,23 @@ const Wishlist = () => {
               );
             })}
           {wishlist?.length < 1 && (
-            <div>
+            <div className="not-found">
               <h3>No products found in the wishlist</h3>
               <img
-                className="not-found-img"
+                className="list-loading-image"
                 src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686160027/cricify/misc/undraw_wishlist_re_m7tv_xlqghh.svg"
                 alt="wishlist plus"
               />
             </div>
           )}
-          <button
-            className="back-to-store-btn"
-            onClick={() => navigate("/products")}
-          >
-            <FaStore /> Back to Store
-          </button>
         </div>
       </div>
+      <button
+        className="back-to-store-btn"
+        onClick={() => navigate("/products")}
+      >
+        <FaStore /> Back to Store
+      </button>
     </div>
   );
 };

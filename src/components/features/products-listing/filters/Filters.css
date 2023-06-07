@@ -87,6 +87,7 @@ input[type="radio"] {
   gap: 0.5rem;
   font-size: 0.8rem;
   outline: none;
+  accent-color: var(--dark-shade-color);
 }
 
 .slider-labels {
@@ -115,5 +116,9 @@ input[type="radio"] {
 
   .filter-section fieldset {
     z-index: 0;
+  }
+
+  .filter-section fieldset {
+    backdrop-filter: none;
   }
 }
