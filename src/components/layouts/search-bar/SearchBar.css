@@ -26,7 +26,7 @@
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
-  color: #888;
+  color: var(--medium-shade-color);
 }
 
 .dropdown {
@@ -53,10 +53,24 @@
   background-color: var(--light-shade-color);
 }
 
+.clear-search-icon {
+  position: absolute;
+  top: 50%;
+  right: -90%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  color: var(--dark-shade-color);
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .input-field,
   .dropdown {
     width: 120%;
+  }
+
+  .clear-search-icon {
+    right: -15%;
   }
 }
 
@@ -64,5 +78,9 @@
   .input-field,
   .dropdown {
     width: 150%;
+  }
+
+  .clear-search-icon {
+    right: -40%;
   }
 }
