@@ -126,7 +126,7 @@ const AddressSelectionListing = () => {
               </label>
             );
           })}
-        <CustomModal isOpen={isModalOpen}>
+        <CustomModal isOpen={isModalOpen} onClose={handleCloseModal}>
           <form
             className="address-checkout-form"
             onSubmit={submitClickHandler}
@@ -231,9 +231,6 @@ const AddressSelectionListing = () => {
               </div>
             </div>
             <div className="form-action-btns">
-              <button className="form-btn-close" onClick={handleCloseModal}>
-                Close
-              </button>
               <button type="submit" className="form-btn-submit">
                 Submit
               </button>

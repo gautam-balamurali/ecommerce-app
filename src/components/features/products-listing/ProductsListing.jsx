@@ -80,6 +80,7 @@ const ProductsListing = () => {
                 <div key={_id} className="product-container">
                   {isTrending && <span className="card-badge">Trending</span>}
                   <span
+                    title="Add to Wishlist"
                     className={`wishlist-heart ${
                       isWishlistContainsProduct(_id) ? "favorite" : ""
                     }`}

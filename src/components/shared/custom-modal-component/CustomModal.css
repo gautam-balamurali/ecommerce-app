@@ -14,14 +14,14 @@
 .modal {
   background-color: #fff;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
-.modal-content {
+/* .modal-content {
   margin: 1rem;
-}
+} */
 
 .modal-close-btn {
   position: absolute;
