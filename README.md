@@ -48,6 +48,12 @@ cricify is designed to be responsive and accessible on various devices.
 - The website will automatically adapt to the screen size and display properly on your mobile device.
 - Navigate through the different pages and explore the features of cricify.
 
+## Demo
+
+- PS: GIF quality is poor due to large size.
+
+![alt text](src/assets/cricify-git-video.gif)
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
