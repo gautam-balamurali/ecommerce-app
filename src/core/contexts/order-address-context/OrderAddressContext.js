@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { orderAddressReducer } from "../../reducers/order-address-reducer/OrderAddressReducer";
 import { orderAddressReducerInitialState } from "../../reducers/order-address-reducer/OrderAddressReducerInitialState";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
+import { toast } from "react-toastify";
 
 export const OrderAddressContext = createContext();
 
@@ -22,6 +23,7 @@ export const OrderAddressProvider = ({ children }) => {
 
   const addNewAddress = (address) => {
     orderAddressDispatch({ type: "ADD_NEW_ADDRESS", payload: address });
+    toast.success("New address added.");
   };
 
   const updateAddressHistory = (updatedAddress) => {
@@ -40,6 +42,7 @@ export const OrderAddressProvider = ({ children }) => {
       type: "UPDATE_ADDRESS_DETAILS",
       payload: newAddressHistory,
     });
+    toast.success("Address updated!");
   };
 
   const deleteAddress = (addressID) => {
@@ -50,6 +53,7 @@ export const OrderAddressProvider = ({ children }) => {
       type: "UPDATE_ADDRESS_DETAILS",
       payload: newAddressHistory,
     });
+    toast.success("Address deleted!");
   };
 
   const setCurrentOrderDetails = (orderDetails) => {
@@ -68,6 +72,7 @@ export const OrderAddressProvider = ({ children }) => {
       type: "CHANGE_DEFAULT_ADDRESS",
       payload: currentAddress,
     });
+    toast.success("Default address changed!");
   };
 
   const addOrderDetails = (orderDetails) => {

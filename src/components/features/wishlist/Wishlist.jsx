@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { FaCartPlus, FaShoppingCart, FaStar } from "react-icons/fa";
+import { FaCartPlus, FaShoppingCart, FaStar, FaStore } from "react-icons/fa";
 import { BsCartDashFill } from "react-icons/bs";
 import { toast } from "react-toastify";
 
@@ -115,7 +115,22 @@ const Wishlist = () => {
                 </div>
               );
             })}
-          {wishlist?.length < 1 && <h3>No products found in the wishlist.</h3>}
+          {wishlist?.length < 1 && (
+            <div>
+              <h3>No products found in the wishlist</h3>
+              <img
+                className="not-found-img"
+                src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686160027/cricify/misc/undraw_wishlist_re_m7tv_xlqghh.svg"
+                alt="wishlist plus"
+              />
+            </div>
+          )}
+          <button
+            className="back-to-store-btn"
+            onClick={() => navigate("/products")}
+          >
+            <FaStore /> Back to Store
+          </button>
         </div>
       </div>
     </div>

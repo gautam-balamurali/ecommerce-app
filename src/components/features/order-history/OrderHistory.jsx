@@ -100,9 +100,16 @@ const OrderHistory = () => {
           )
         )}
       {orderHistory?.length < 1 && (
-        <h4>
-          Your order list is empty. Visit our store and do some shopping.✌🏼
-        </h4>
+        <div>
+          <h4>
+            Your order list is empty. Visit our store and do some shopping.✌🏼
+          </h4>
+          <img
+            className="not-found-img"
+            src="https://res.cloudinary.com/dbe8yf165/image/upload/v1686160437/cricify/misc/undraw_payments_re_77x0_yc32k0.svg"
+            alt="order plus"
+          />
+        </div>
       )}
       <button className="place-order-btn" onClick={() => navigate("/products")}>
         Visit Store

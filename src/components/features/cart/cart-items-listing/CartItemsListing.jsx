@@ -40,6 +40,7 @@ const CartItemsListing = () => {
               return (
                 <div key={_id} className="cart-product-container">
                   <span
+                    title="Add to Wishlist"
                     className={`cart-wishlist-heart ${
                       isWishlistContainsProduct(_id) ? "cart-favorite" : ""
                     }`}

@@ -69,6 +69,7 @@ const ProductDetails = ({ product }) => {
         <div className="product-container-product-details">
           {isTrending && <span className="card-badge">Trending</span>}
           <span
+            title="Add to Wishlist"
             className={`wishlist-heart-product-details ${
               isWishlistContainsProduct(_id) ? "favorite" : ""
             }`}
