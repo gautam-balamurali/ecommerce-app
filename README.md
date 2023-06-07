@@ -1,5 +1,6 @@
 <div align="center">
-    <h1>cricify</h1>
+    <h1>![logo512](https://github.com/gautam-balamurali/ecommerce-app/assets/27736288/302b6655-8014-4d96-8dd7-2d38f7baf02f)
+cricify</h1>
      <h3 >
       🏏🎽 Your All-Star Destination for Cricket Fashion and Gear! 🎽🏏
     </h3>
