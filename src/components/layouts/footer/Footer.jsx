@@ -19,25 +19,54 @@ const Footer = () => {
             <p>321, Random Place</p>
             <p>123456, India</p>
             <p>+91 1234567890</p>
-            <p>customer@sochenge.com</p>
+            <p>customer@cricify.com</p>
           </div>
           <div className="website-info">
-            <h4>Sochenge</h4>
+            <h4>Cricify</h4>
             <p>
               An e-commerce website that provides high quality services to its
-              customers at affordable prices.
+              customers at affordable prices. Your All-Star Destination for
+              Cricket Fashion and Gear!
             </p>
           </div>
           <div className="resources-info">
             <h4>Resources</h4>
             <div className="resources-content">
               <div className="resources-contents-half">
-                <p>Products</p>
-                <p>About Us</p>
+                <a
+                  className="link"
+                  target="_blank"
+                  href="https://github.com/gautam-balamurali"
+                  rel="noopener noreferrer"
+                >
+                  <p>Products</p>
+                </a>
+                <a
+                  className="link"
+                  target="_blank"
+                  href="https://github.com/gautam-balamurali"
+                  rel="noopener noreferrer"
+                >
+                  <p>About Us</p>
+                </a>
               </div>
               <div className="resources-contents-half">
-                <p>Articles</p>
-                <p>Documentation</p>
+                <a
+                  className="link"
+                  target="_blank"
+                  href="https://github.com/gautam-balamurali"
+                  rel="noopener noreferrer"
+                >
+                  <p>Articles</p>
+                </a>
+                <a
+                  className="link"
+                  target="_blank"
+                  href="https://github.com/gautam-balamurali"
+                  rel="noopener noreferrer"
+                >
+                  <p>Documentation</p>
+                </a>
               </div>
             </div>
           </div>
@@ -45,9 +74,16 @@ const Footer = () => {
         <div className="developer-txt">
           <p>
             Developed with{" "}
-            <span>
-              <FaHeart size={12} />
-            </span>{" "}
+            <a
+              className="link"
+              target="_blank"
+              href="https://gautam-balamurali.netlify.app/"
+              rel="noopener noreferrer"
+            >
+              <span className="heart">
+                <FaHeart size={12} />
+              </span>
+            </a>{" "}
             by Gautam Balamurali
           </p>
         </div>

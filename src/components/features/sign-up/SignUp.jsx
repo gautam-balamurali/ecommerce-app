@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -45,28 +46,33 @@ const SignUp = () => {
 
   const signUpHandler = async (signUpCredentials) => {
     productsDispatch({ type: "LOADER_INITIATED" });
-    try {
-      const userDetails = await signUpUser(signUpCredentials);
+    const userDetails = await signUpUser(signUpCredentials);
+    if (userDetails) {
       productsDispatch({
         type: "UPDATE_CART_AND_WISHLIST",
         payload: userDetails,
       });
-    } catch (error) {
-      console.error(error);
-      productsDispatch({
-        type: "FETCH_ERROR_DETAILS",
-        payload: error?.response,
+      toast.success(`Hello ${userDetails?.firstName}, Welcome to 🥎 cricify!`, {
+        theme: "light",
       });
-    } finally {
-      productsDispatch({ type: "LOADER_STOPPED" });
+    } else {
+      toast.error(
+        "Sign up failed! Please try again after sometime. We'll get in touch with you soon.",
+        {
+          theme: "colored",
+        }
+      );
     }
+    productsDispatch({ type: "LOADER_STOPPED" });
   };
 
   const submitClickHandler = (event) => {
     event.preventDefault();
     signUpCredentials.password === signUpCredentials.confirmPassword
       ? signUpHandler(signUpCredentials)
-      : alert("Passwords don't match");
+      : toast.error("Passwords don't match, please try again!", {
+          theme: "colored",
+        });
   };
 
   const toggleShowHidePassword = () => {

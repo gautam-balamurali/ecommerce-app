@@ -1,7 +1,15 @@
 .wishlist-listing-section {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 4rem);
+  align-items: center;
+  height: calc(100vh - 4rem -4rem);
+}
+
+.wishlist-listing-section h2 {
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 0.2em;
+  padding: 1rem;
 }
 
 .wishlist-listing {
@@ -170,10 +178,15 @@
   text-transform: capitalize;
 }
 
+@media (max-width: 300px) {
+  .wishlist-add-to-wishlist-btn {
+    gap: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .wishlist-layout {
-    display: grid;
-    grid-template-columns: 16rem auto;
+    width: 60%;
   }
 }
 

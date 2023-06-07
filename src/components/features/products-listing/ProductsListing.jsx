@@ -86,7 +86,7 @@ const ProductsListing = () => {
                     onClick={() =>
                       token
                         ? isWishlistContainsProduct(_id)
-                          ? removeProductFromWishlist(_id)
+                          ? removeProductFromWishlist(_id, title)
                           : addProductToWishlist(product)
                         : navigate("/login")
                     }
@@ -97,7 +97,13 @@ const ProductsListing = () => {
                       <FaRegHeart />
                     )}
                   </span>
-                  <div className="product-image-container">
+                  <div
+                    className={
+                      inStock
+                        ? "product-image-container"
+                        : "product-image-container-out-of-stock"
+                    }
+                  >
                     {images.map((imageUrl, index) => (
                       <img
                         key={index}

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 4rem - 4rem);
+  height: calc(100vh - 1rem - 1rem);
 }
 
 .signup-card {
@@ -93,6 +93,7 @@
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
 }
 
 @media (min-width: 412px) and (max-width: 500px) {
@@ -114,6 +115,6 @@
 
 @media (min-width: 1024px) {
   .signup-page {
-    height: calc(100vh - 1.5rem - 1.5rem);
+    height: 110vh;
   }
 }

@@ -1,0 +1,25 @@
+.order-history-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.order-history-details h2 {
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .order-history-details {
+    padding: 2rem 10rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .order-history-details {
+    padding: 2rem 30rem;
+  }
+}
