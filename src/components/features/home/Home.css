@@ -20,13 +20,13 @@
 
 @media (min-width: 412px) and (max-width: 415px) {
     .home-page {
-      gap: 1rem;
+      gap: 3rem;
     }
   }
 
 @media (min-width: 768px) {
   .home-page {
-    gap: 1rem;
+    gap: 4rem;
   }
 }
 
