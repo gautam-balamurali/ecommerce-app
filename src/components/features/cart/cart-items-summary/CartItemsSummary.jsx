@@ -14,11 +14,6 @@ const CartItemsSummary = ({ setShowCouponModal, isCouponApplied, coupon }) => {
 
   const totalPriceAfterDiscount = totalPrice - 0.1 * totalPrice;
 
-  // Calculate the total price with discount and coupon
-  //   const totalPrice = totalMrp - 500 - (isCouponApplied ? coupon : 0);
-
-  // Calculate the discount based on the quantity
-  // const discountedPrice = 500 + (quantity - 1) * 500;
   const discountedPrice = totalPrice - totalPriceAfterDiscount;
 
   const handleCheckout = () => {
