@@ -1,7 +1,6 @@
 .cart-listing-section {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 4rem -4rem);
 }
 
 .cart-listing {
