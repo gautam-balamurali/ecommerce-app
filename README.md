@@ -50,9 +50,7 @@ cricify is designed to be responsive and accessible on various devices.
 
 ## Demo
 
-- PS: GIF quality is poor due to large size.
-
-![alt text](src/assets/cricify-git-video.gif)
+https://www.loom.com/share/c3f0f257af984d43a0350e9d0533f464
 
 ## Getting Started with Create React App
 
