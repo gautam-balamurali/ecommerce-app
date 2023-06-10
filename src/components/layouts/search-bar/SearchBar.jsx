@@ -3,11 +3,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 import { useProducts } from "../../../core/contexts/products-context/ProductsContext";
 import InputField from "../../shared/input-field-component/InputField";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaTimes } from "react-icons/fa";
 
 const SearchBar = () => {
-  const { appliedFilterValues, handleFilterChange, products, clearFilters } =
-    useProducts();
+  const {
+    appliedFilterValues,
+    handleFilterChange,
+    products,
+    clearFilters,
+    clearSearchValue,
+  } = useProducts();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -35,6 +40,11 @@ const SearchBar = () => {
       <div className="search-icon" aria-hidden="true">
         <FaSearch size={12} />
       </div>
+      {showDropdown && (
+        <div className="clear-search-icon" onClick={clearSearchValue}>
+          <FaTimes size={12} />
+        </div>
+      )}
       <InputField
         type={"text"}
         name={"searchValue"}

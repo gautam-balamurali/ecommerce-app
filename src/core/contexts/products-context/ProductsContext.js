@@ -227,7 +227,7 @@ export const ProductsProvider = ({ children }) => {
       searchValue: "",
       categoryCheckboxValues: [categoryName],
       booleanCheckboxValues: [],
-      inStockCheckboxValue:[],
+      inStockCheckboxValue: [],
       radioButtonValue: "",
       rangeValue: 1,
     };
@@ -242,7 +242,7 @@ export const ProductsProvider = ({ children }) => {
       searchValue: "",
       categoryCheckboxValues: [],
       booleanCheckboxValues: [collectionName],
-      inStockCheckboxValue:[],
+      inStockCheckboxValue: [],
       radioButtonValue: "",
       rangeValue: 1,
     };
@@ -257,9 +257,20 @@ export const ProductsProvider = ({ children }) => {
       searchValue: "",
       categoryCheckboxValues: [],
       booleanCheckboxValues: [],
-      inStockCheckboxValue:[],
+      inStockCheckboxValue: [],
       radioButtonValue: "",
       rangeValue: 1,
+    };
+    productsDispatch({
+      type: "CLEAR_FILTERS",
+      payload: { ...newAppliedFilterValues },
+    });
+  };
+
+  const clearSearchValue = () => {
+    const newAppliedFilterValues = {
+      ...state.appliedFilterValues,
+      searchValue: "",
     };
     productsDispatch({
       type: "CLEAR_FILTERS",
@@ -312,6 +323,7 @@ export const ProductsProvider = ({ children }) => {
         filterByCategory,
         clearFilters,
         filterByCollection,
+        clearSearchValue,
       }}
     >
       {children}
